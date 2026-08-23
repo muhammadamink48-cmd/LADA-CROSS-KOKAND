@@ -1,9 +1,25 @@
+/* Telefon ekrani uchun menyuni tartiblash */
+header, nav, .navbar {
+  display: flex !important;
+  flex-direction: column !important; /* Tugmalarni ustma-ust qiladi */
+  align-items: center !important;
+  width: 100% !important;
+  padding: 10px !important;
+  gap: 8px !important;
+}
+
+/* Yozuvlar va tugmalar sig'ishi uchun */
+header a, nav a, .navbar a, h1, h2 {
+  position: static !important; /* Bir-birining ustiga minib qolishini to'xtatadi */
+  font-size: 16px !important;
+  text-align: center !important;
+  white-space: normal !important;
+  margin: 2px 0 !important;
+}
+
+/* Rasm pastroqda chiroyli turishi uchun */
 img {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
+  margin-top: 15px !important;
 }
 
 
