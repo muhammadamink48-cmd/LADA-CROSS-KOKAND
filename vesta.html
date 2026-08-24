@@ -7,164 +7,245 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background-color: #f4f6f8; padding: 20px; }
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .back-btn { text-decoration: none; color: #fff; background-color: #007bff; padding: 10px 18px; border-radius: 6px; font-weight: bold; }
+        .lada-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .lada-top-center a { margin: 0 10px; color: #007bff; text-decoration: none; font-weight: bold; }
+        .lada-top-right button { padding: 8px 16px; background: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
         .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
         .card h3 { font-size: 16px; margin: 12px 0 8px; color: #333; height: 40px; }
         .card .price { font-size: 16px; color: #e63946; font-weight: bold; margin-bottom: 6px; }
         .card .stock { font-size: 14px; color: #28a745; font-weight: bold; margin-bottom: 12px; background-color: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
-        .buy-btn { display: inline-block; text-decoration: none; background-color: #28a745; color: #fff; padding: 8px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
+        .buy-btn { display: inline-block; border: none; cursor: pointer; background-color: #28a745; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html" class="back-btn">← Bosh sahifa</a>
+
+    <div class="lada-header">
         <h2>LADA Vesta Zapchastlari</h2>
+        <div class="lada-top-center">
+            <a href="https://t.me/telegram" target="_blank">Telegram</a>
+            <a href="tel:+998901234567">Telefon</a>
+        </div>
+        <div class="lada-top-right">
+            <button>Yopish</button>
+        </div>
     </div>
 
     <div class="parts-grid">
         <div class="card">
             <img src="./images/vesta-fara.jpg" alt="Oldi Fara">
             <h3>Lada Vesta Oldi Fara</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
+            <div class="price">450 000 so'm</div>
+            <div class="stock">Soni: <span class="count">5</span> ta bor</div>
+            <button class="buy-btn">Sotib olish</button>
         </div>
         <div class="card">
             <img src="./images/vesta-stop.jpg" alt="Orqa Stop Fara">
             <h3>Lada Vesta Orqa Stop Fara</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
+            <div class="price">380 000 so'm</div>
+            <div class="stock">Soni: <span class="count">5</span> ta bor</div>
+            <button class="buy-btn">Sotib olish</button>
         </div>
         <div class="card">
             <img src="./images/vesta-bamper-oldi.jpg" alt="Oldi Bamper">
             <h3>Oldi Bamper</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
+            <div class="price">650 000 so'm</div>
+            <div class="stock">Soni: <span class="count">3</span> ta bor</div>
+            <button class="buy-btn">Sotib olish</button>
         </div>
         <div class="card">
             <img src="./images/vesta-bamper-orqa.jpg" alt="Orqa Bamper">
             <h3>Orqa Bamper</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-kolodka-oldi.jpg" alt="Oldi Tormoz Kolodkasi">
-            <h3>Oldi Tormoz Kolodkasi</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-kolodka-orqa.jpg" alt="Orqa Tormoz Kolodkasi">
-            <h3>Orqa Tormoz Kolodkasi</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-disk-tormoz.jpg" alt="Tormoz Diski">
-            <h3>Oldi Tormoz Diski</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-amortizator-oldi.jpg" alt="Oldi Amortizator">
-            <h3>Oldi Amortizator</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-amortizator-orqa.jpg" alt="Orqa Amortizator">
-            <h3>Orqa Amortizator</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-grm-kit.jpg" alt="GRM Remen To'plami">
-            <h3>GRM Remen To'plami</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-pompa.jpg" alt="Suv Nasosi (Pompa)">
-            <h3>Suv Nasosi (Pompa)</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-svecha.jpg" alt="Svecha To'plami">
-            <h3>Svecha To'plami (4 dona)</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-filtr-moy.jpg" alt="Moy Filtri">
-            <h3>Moy Filtri</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-filtr-havo.jpg" alt="Havo Filtri">
-            <h3>Havo Filtri</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-filtr-salon.jpg" alt="Salon Filtri">
-            <h3>Salon Filtri</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-sharovaya.jpg" alt="Sharovaya Opora">
-            <h3>Sharovaya Opora</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-nakonechnik.jpg" alt="Rulevoy Nakonechnik">
-            <h3>Rulevoy Nakonechnik</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-granata.jpg" alt="Tashqi Granata">
-            <h3>Tashqi Granata (ShRUS)</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-radiator.jpg" alt="Sovitish Radiatori">
-            <h3>Sovitish Radiatori</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/vesta-generator.jpg" alt="Generator">
-            <h3>Generator</h3>
-            <div class="price">... so'm</div>
-            <div class="stock">Soni: 5 ta bor</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
+            <div class="price">600 000 so'm</div>
+            <div class="stock">Soni: <span class="count">4</span> ta bor</div>
+            <button class="buy-btn">Sotib olish</button>
         </div>
     </div>
+
+    <!-- MODAL OYNA -->
+    <div class="modal-overlay" id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+        <div class="modal-content" style="background:#fff; width:90%; max-width:450px; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.3); position:relative; max-height:90vh; overflow-y:auto;">
+            <button type="button" class="close-modal" onclick="closeOrderModal()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; border:none; background:none;">&times;</button>
+            <h3 id="modalTitle" style="margin-bottom:15px; text-align:center;">Buyurtma rasmiylashtirish</h3>
+            
+            <div class="delivery-options" style="display:flex; gap:10px; margin-bottom:15px;">
+                <button type="button" class="option-btn active" id="btnPickup" onclick="selectType('pickup')" style="flex:1; padding:10px; border:2px solid #007bff; background:#007bff; color:#fff; border-radius:6px; font-weight:bold; cursor:pointer;">O'zim olib ketaman</button>
+                <button type="button" class="option-btn" id="btnDelivery" onclick="selectType('delivery')" style="flex:1; padding:10px; border:2px solid #007bff; background:#fff; color:#007bff; border-radius:6px; font-weight:bold; cursor:pointer;">Yetkazib berish</button>
+            </div>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="form-group" style="margin-bottom:12px; text-align:left;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Ism:</label>
+                    <input type="text" id="custName" required placeholder="Ismingizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Familiya:</label>
+                    <input type="text" id="custSurname" placeholder="Familiyangizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px; text-align:left;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Telefon raqam:</label>
+                    <input type="tel" id="custPhone" required placeholder="+998901234567" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Email:</label>
+                    <input type="email" id="custEmail" placeholder="example@mail.com" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Plastik karta raqami:</label>
+                    <input type="text" id="custCard" placeholder="8600 **** **** ****" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">To'lov cheki (Rasm):</label>
+                    <input type="file" id="custReceipt" accept="image/*" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                </div>
+
+                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:6px; font-weight:bold; font-size:16px; cursor:pointer; margin-top:10px;">Buyurtmani tasdiqlash</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const closeButton = document.querySelector(".lada-top-right button");
+            if (closeButton) {
+                closeButton.addEventListener("click", function () {
+                    window.location.href = "index.html";
+                });
+            }
+
+            const externalLinks = document.querySelectorAll('.lada-top-center a');
+            externalLinks.forEach(function (link) {
+                const href = link.getAttribute('href');
+                if (href && (href.startsWith('http') || href.startsWith('https'))) {
+                    link.setAttribute('target', '_blank');
+                }
+            });
+
+            const buyButtons = document.querySelectorAll(".buy-btn");
+            buyButtons.forEach(btn => {
+                btn.onclick = function (e) {
+                    e.preventDefault();
+                    const card = this.closest('.card');
+                    currentStockElement = card.querySelector('.count');
+                    let currentStock = currentStockElement ? parseInt(currentStockElement.textContent) : 0;
+
+                    if (currentStock <= 0) {
+                        alert("Kechirasiz, ushbu mahsulot tugagan!");
+                        return;
+                    }
+
+                    const titleElement = card.querySelector('h3');
+                    selectedProduct = titleElement ? titleElement.textContent : "Zapchast";
+
+                    document.getElementById('modalTitle').textContent = selectedProduct + " - Buyurtma";
+                    document.getElementById('orderModal').style.display = 'flex';
+                };
+            });
+        });
+
+        const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
+        const ADMIN_CHAT_ID = "8673898827"; 
+
+        let selectedProduct = "";
+        let currentStockElement = null;
+        let orderType = "pickup";
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function selectType(type) {
+            orderType = type;
+            const pickupBtn = document.getElementById('btnPickup');
+            const deliveryBtn = document.getElementById('btnDelivery');
+            const deliveryFields = document.querySelectorAll('.delivery-only');
+
+            if (type === 'pickup') {
+                pickupBtn.style.background = '#007bff';
+                pickupBtn.style.color = '#fff';
+                deliveryBtn.style.background = '#fff';
+                deliveryBtn.style.color = '#007bff';
+                deliveryFields.forEach(el => el.style.display = 'none');
+            } else {
+                deliveryBtn.style.background = '#007bff';
+                deliveryBtn.style.color = '#fff';
+                pickupBtn.style.background = '#fff';
+                pickupBtn.style.color = '#007bff';
+                deliveryFields.forEach(el => el.style.display = 'block');
+            }
+        }
+
+        async function handleOrderSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+
+            if (currentStockElement) {
+                let currentStock = parseInt(currentStockElement.textContent);
+                if (currentStock > 0) {
+                    currentStockElement.textContent = currentStock - 1;
+                }
+            }
+
+            if (orderType === 'pickup') {
+                const msg = `📦 NEW ORDER (O'ZIM OLIB KETAMAN)\nMahsulot: ${selectedProduct}\nIsm: ${name}\nTel: ${phone}`;
+                sendTelegramMessage(msg);
+
+                alert("Tasdiqlandi! Buyurtma 1 kun turadi va bekor bo'ladi.");
+                closeOrderModal();
+            } else {
+                const surname = document.getElementById('custSurname').value;
+                const email = document.getElementById('custEmail').value;
+                const card = document.getElementById('custCard').value;
+                const receiptFile = document.getElementById('custReceipt').files[0];
+
+                const msg = `🚚 NEW ORDER (YETKAZIB BERISH)\nMahsulot: ${selectedProduct}\nIsm-Familiya: ${name} ${surname}\nEmail: ${email}\nTel: ${phone}\nKarta: ${card}`;
+                
+                if (receiptFile) {
+                    sendTelegramPhotoWithButton(receiptFile, msg);
+                } else {
+                    sendTelegramMessage(msg);
+                }
+
+                alert("Buyurtmangiz qabul qilindi! Admin chekni va ma'lumotlarni tekshirib, telefoningizga tasdiqlash kodini yuboradi.");
+                closeOrderModal();
+            }
+        }
+
+        function sendTelegramMessage(text) {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: ADMIN_CHAT_ID,
+                    text: text
+                })
+            });
+        }
+
+        function sendTelegramPhotoWithButton(file, captionText) {
+            const formData = new FormData();
+            formData.append('chat_id', ADMIN_CHAT_ID);
+            formData.append('photo', file);
+            formData.append('caption', captionText);
+            
+            const keyboard = {
+                inline_keyboard: [[
+                    { text: "✅ Tasdiqlash (Kod Yuborish)", callback_data: "send_code" }
+                ]]
+            };
+            formData.append('reply_markup', JSON.stringify(keyboard));
+
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                method: 'POST',
+                body: formData
+            });
+        }
+    </script>
 </body>
 </html>
