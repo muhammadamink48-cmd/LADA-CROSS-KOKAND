@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LADA XRAY Zapchastlari (300 xil zapchast)</title>
+    <title>LADA XRAY Zapchastlari</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background-color: #f4f6f8; padding: 20px; }
         .lada-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 10px; }
         .lada-top-center a { margin: 0 10px; color: #007bff; text-decoration: none; font-weight: bold; }
         .lada-top-right button { padding: 8px 16px; background: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
         .search-container { width: 100%; margin-bottom: 20px; }
         .search-container input { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; outline: none; }
+
         .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
         .card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
         .card h3 { font-size: 14px; margin: 10px 0 6px; color: #333; min-height: 38px; }
+        .card .price { font-size: 15px; color: #e63946; font-weight: bold; margin-bottom: 6px; }
         .card .stock { font-size: 13px; color: #28a745; font-weight: bold; margin-bottom: 10px; background-color: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
         .buy-btn { display: inline-block; border: none; cursor: pointer; background-color: #28a745; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
     </style>
@@ -23,7 +26,7 @@
 <body>
 
     <div class="lada-header">
-        <h2>LADA XRAY Zapchastlari (300 xil zapchast)</h2>
+        <h2>LADA XRAY Zapchastlari</h2>
         <div class="lada-top-center">
             <a href="https://t.me/telegram" target="_blank">Telegram</a>
             <a href="tel:+998901234567">Telefon</a>
@@ -39,96 +42,93 @@
 
     <div class="parts-grid" id="partsGrid"></div>
 
-    <!-- MODAL OYNA -->
-    <div class="modal-overlay" id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-        <div class="modal-content" style="background:#fff; width:90%; max-width:450px; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.3); position:relative; max-height:90vh; overflow-y:auto;">
-            <button type="button" class="close-modal" onclick="closeOrderModal()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; border:none; background:none;">&times;</button>
-            <h3 id="modalTitle" style="margin-bottom:15px; text-align:center;">Buyurtma rasmiylashtirish</h3>
-            
-            <div class="delivery-options" style="display:flex; gap:10px; margin-bottom:15px;">
-                <button type="button" class="option-btn active" id="btnPickup" onclick="selectType('pickup')" style="flex:1; padding:10px; border:2px solid #007bff; background:#007bff; color:#fff; border-radius:6px; font-weight:bold; cursor:pointer;">O'zim olib ketaman</button>
-                <button type="button" class="option-btn" id="btnDelivery" onclick="selectType('delivery')" style="flex:1; padding:10px; border:2px solid #007bff; background:#fff; color:#007bff; border-radius:6px; font-weight:bold; cursor:pointer;">Yetkazib berish</button>
-            </div>
-
-            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
-                <div class="form-group" style="margin-bottom:12px; text-align:left;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Ism:</label>
-                    <input type="text" id="custName" required placeholder="Ismingizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Familiya:</label>
-                    <input type="text" id="custSurname" placeholder="Familiyangizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group" style="margin-bottom:12px; text-align:left;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Telefon raqam:</label>
-                    <input type="tel" id="custPhone" required placeholder="+998901234567" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Email:</label>
-                    <input type="email" id="custEmail" placeholder="example@mail.com" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Plastik karta raqami:</label>
-                    <input type="text" id="custCard" placeholder="8600 **** **** ****" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">To'lov cheki (Rasm):</label>
-                    <input type="file" id="custReceipt" accept="image/*" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                </div>
-
-                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:6px; font-weight:bold; font-size:16px; cursor:pointer; margin-top:10px;">Buyurtmani tasdiqlash</button>
-            </form>
-        </div>
-    </div>
-
     <script>
         const rawPartNames = [
-            "Oldi Amortizator Cross Chap", "Oldi Amortizator Cross O'ng", "Orqa Amortizator Cross Chap", "Orqa Amortizator Cross O'ng",
-            "Amortizator Chashkasi", "Podshipnik Stupitsa Oldi", "Podshipnik Stupitsa Orqa", "Oldi Tormoz Kolodka Renault-Lada",
-            "Orqa Tormoz Barabani XRAY", "Oldi Tormoz Diski Ventilyatsiyali", "Sharavoy Opora Renault Platforma", "Rulevoy Tyaga",
-            "Rulevoy Nakonechnik Chap", "Rulevoy Nakonechnik O'ng", "Stabilizator Stoyka Reinforced", "Stabilizator Vtulka Rezina",
-            "Rychag Oldi Podveska Chap", "Rychag Oldi Podveska O'ng", "Saylentblok Rychaga", "Pylnik SHRUS Tashqi Universal",
-            "SHRUS Tashqi 25 Shlits", "SHRUS Ichki 23 Shlits", "Moy Filtri 1.8 H4M", "Havo Filtri Kvadrat",
-            "Salon Filtri Ugolny", "Yoqilg'i Filtri Pogruznoy", "Zajiganiye Svechasi Denso", "Katushka Zajiganiya Bosch",
-            "GRM Kamari Kontitech", "GRM Rolik Komplekt", "General Kamar Gates", "Suv Pompasi H4M",
-            "Termostat Korpus Plastik", "Radiator Ohlajdeniya", "Radiator Konditsionera Valeo", "Pechka Radiator",
-            "Ventilyator Radiatora Dvigatelya", "Pechka Motorchigi", "Glushitel Qushimcha Gofra", "Katalizator Neytralizator",
-            "Datchik Kisloroda Verxny", "Datchik Kisloroda Nizhny", "GBL Prokladka Metall", "Klapannaya Kryshka Prokladka",
-            "Porshen Komplekt 82.0", "Porshen Koltso Yapon", "Shatun Dvigatel 1.6", "Vkladish Shatun STD",
-            "Vkladish Korennoy STD", "Kolenval Val 21129", "Salnik Kolenval Oldi", "Salnik Kolenval Orqa",
-            "Rasspredval Vpusk", "Rasspredval Vypusk", "Gidrokompensator INA", "Klapan Vpusk Vesta-XRAY",
-            "Klapan Vypusk Vesta-XRAY", "Maslyanoy Nasos Korpus", "Karter Poddon Alyumin", "Podushka Dvigatel Prava",
-            "Podushka Dvigatel Leva", "Podushka KPP Gitara", "Datchik Kolenval Bosch", "Datchik Rasspredval OEM",
-            "Datchik Detonatsii", "Datchik Davleniya Masla", "Datchik Temperatury ARDUINO", "Datchik ABS Oldi",
-            "Datchik ABS Orqa", "Drosselnaya Zaslonka Elektronnaya", "Forsunka Toplivnaya 1.8", "Benzonasos Modul Komplekt",
-            "Vakuumny Usilitel Tormozov", "Glavny Tormoznoy Tsilindr", "Tormoz Shlang Rubber", "Support Oldi Chap",
-            "Support Oldi O'ng", "Ruchnik Tross Komplekt", "Rulevaya Reyka Elektrousilitel", "Stsepleniye Komplekt Valeo",
-            "Vyzhimnoy Podshipnik Gidravlika", "Flyanets KPP", "Mahovik Dvigatel", "KPP Salnik Pervichny Val",
-            "KPP Salnik Privod", "Generator 120A", "Starter 1.4kW", "Akumulyator 60Ah",
-            "Zamok Zajiganiya Klyuch", "Fara Oldi Chap LED Stripe", "Fara Oldi O'ng LED Stripe", "Protivotumannaya Fara",
-            "Fonar Orqa LED Chap", "Fonar Orqa LED O'ng", "Dvornik Motorik", "Stekloomyvatel Nasos",
-            "Kapot Metall", "Krylo Oldi Chap", "Krylo Oldi O'ng", "Podkrylnik Plastik",
-            "Bamper Oldi Cross", "Bamper Orqa Cross", "Usilitel Bamper Alyumin", "Dver Oldi Chap",
-            "Dver Oldi O'ng", "Dver Orqa Chap", "Dver Orqa O'ng", "Zamok Dver Elektrichny",
-            "Steklopodyomnik Motorik", "Lobovoye Steklo Obogrev", "Zerkalo Elektro Privod", "Bagazhnik Kryshka",
-            "Torpeda Komplekt", "Airbag Rul", "Airbag Passajir", "Remen Bezopasnosti",
-            "Konditsioner Kompressor Sanden", "Disk R16 Plastik", "Disk R17 Alyumin", "Zashchita Kartera Stal 2mm",
-            "Bryzgovik Komplekt", "Deflektor Okon", "Gaz Reduktor Tomasetto", "Multiklapan LPG"
+            "Oldi Amortizator Chap", "Oldi Amortizator O'ng", "Orqa Amortizator Chap", "Orqa Amortizator O'ng", 
+            "Oldi Amortizator Podshipnigi", "Orqa Amortizator Podshipnigi", "Oldi Tormoz Kolodkasi", "Orqa Tormoz Kolodkasi",
+            "Oldi Tormoz Diski", "Orqa Tormoz Barabani", "Stupitsa Podshipnigi Oldi", "Stupitsa Podshipnigi Orqa",
+            "Sharavoy Opora Chap", "Sharavoy Opora O'ng", "Rulevoy Tyaga Chap", "Rulevoy Tyaga O'ng",
+            "Rulevoy Nakonechnik Chap", "Rulevoy Nakonechnik O'ng", "Stabilizator Stoykasi Oldi", "Stabilizator Stoykasi Orqa",
+            "Stabilizator Vtulkasi", "Rychag Oldi Chap", "Rychag Oldi O'ng", "Rychag Saylentbloki",
+            "Pylnik SHRUS Tashqi", "Pylnik SHRUS Ichki", "SHRUS Tashqi Chap", "SHRUS Tashqi O'ng",
+            "SHRUS Ichki Chap", "SHRUS Ichki O'ng", "Moy Filtri", "Havo Filtri", "Salon Filtri", "Yoqilg'i Filtri",
+            "Zajiganiye Svechasi", "Zajiganiye Katushkasi", "Vysokovoltny Provodlar", "GRM Kamari",
+            "GRM Rolik Netyajitel", "GRM Rolik Obvodnoy", "Naruq Kamar (General)", "Naruq Kamar Roligi",
+            "Suv Pompasi", "Termostat", "Termostat Korpus", "Radiator Dvigatel", "Radiator Konditsioner",
+            "Radiator Pechka", "Ventilator Radiator", "Ventilator Konditsioner", "Pechka Motori", "Pechka Rezistori",
+            "Glushitel Oldi Qismi", "Glushitel O'rta Qismi", "Glushitel Orqa Qismi", "Katalizator",
+            "Gofra Glushitel", "Lyambda Zond Yuqori", "Lyambda Zond Quyi", "Kollektor Prokladkasi",
+            "GBL Prokladkasi", "Klapannaya Kryshka Prokladkasi", "Maslosyomniy Kolpachoklar", "Porshenlar Jamlanmasi",
+            "Porshen Koltsosi", "Shatun", "Shatun Vkladishlari", "Korennoy Vkladishlar", "Kolenval",
+            "Kolenval Salniki Oldi", "Kolenval Salniki Orqa", "Rasspredval", "Rasspredval Salniki",
+            "Gidrokompensatorlar", "Klapan Vpusk", "Klapan Vypusk", "Maslyanoy Nasos", "Maslyanoy Priyomnik",
+            "Karter Poddon", "Karter Prokladkasi", "Dvigatel Podushkasi Oldi", "Dvigatel Podushkasi Orqa",
+            "Dvigatel Podushkasi Chap", "Dvigatel Podushkasi O'ng", "KPP Podushkasi", "Faza Vrachatelnitsa",
+            "Faza Vrachatelnitsa Klapani", "Datchik Kolenvala", "Datchik Rasspredvala", "Datchik Detonatsii",
+            "Datchik Davleniya Masla", "Datchik Temperatury", "Datchik Kisloroda", "Datchik Skorosti",
+            "Datchik ABS Oldi Chap", "Datchik ABS Oldi O'ng", "Datchik ABS Orqa Chap", "Datchik ABS Orqa O'ng",
+            "Datchik Urovnya Topliva", "Drosselnaya Zaslonka", "Pedal Gaza", "Forsunka Toplivnaya",
+            "Rampa Toplivnaya", "Benzonasos Modul", "Benzonasos Setka", "Benzonasos Klapani",
+            "Adsorber Klapani", "Vakuumny Usilitel Tormozov", "Glavny Tormoznoy Tsilindr", "Rabochiy Tormoznoy Tsilindr",
+            "Tormoz Shlangi Oldi", "Tormoz Shlangi Orqa", "Tormoz Supporti Oldi Chap", "Tormoz Supporti Oldi O'ng",
+            "Support Porsheni", "Support Remkomplekt", "Ruchnoy Tormoz Trossi Chap", "Ruchnoy Tormoz Trossi O'ng",
+            "Rulevaya Reyka", "Rulevoy Val", "Rulevoy Kardan", "Pylnik Rulevoy Reyki",
+            "GUR Nasosi", "GUR Shlangi Yuqori", "GUR Shlangi Quyi", "GUR Bachogi",
+            "Stsepleniye Diski", "Stsepleniye Korzinkasi", "Vyzhimnoy Podshipnik", "Vyzhimnoy Gidravlicheskiy",
+            "Stsepleniye Trossi", "Glavny Tsilindr Stsepleniya", "Rabochiy Tsilindr Stsepleniya", "Flyanets",
+            "Mahovik", "Mahovik Bolts", "KPP Val Pervichny", "KPP Val Vtorichny",
+            "KPP Shesternya 1-Peredacha", "KPP Shesternya 2-Peredacha", "KPP Shesternya 3-Peredacha", "KPP Shesternya 4-Peredacha",
+            "KPP Shesternya 5-Peredacha", "Sinhronizator 1-2 Peredacha", "Sinhronizator 3-4 Peredacha", "Sinhronizator 5-Peredacha",
+            "KPP Salnik Pervichnogo Vala", "KPP Salnik Privoda Chap", "KPP Salnik Privoda O'ng", "Kulasa KPP",
+            "Tross KPP Vybor Peredach", "Rychag KPP", "Kulasa Remkomplekt", "Generator",
+            "Generator Diodny Most", "Generator Rele Regulator", "Generator Podshipnik Oldi", "Generator Podshipnik Orqa",
+            "Starter", "Starter Vtyagivayushcheye Rele", "Starter Bendiks", "Starter Shchyotkasi",
+            "Akkumulyator", "Klemma Akkumulyatora Plus", "Klemma Akkumulyatora Minus", "Zamok Zajiganiya",
+            "Klyuch Zajiganiya", "Blok Preduhraniteley", "Rele Karlsona", "Rele Benzonasosa",
+            "Fara Oldi Chap", "Fara Oldi O'ng", "Protivotumannaya Fara Chap", "Protivotumannaya Fara O'ng",
+            "Fonar Orqa Chap", "Fonar Orqa O'ng", "Povtoritel Povorota Chap", "Povtoritel Povorota O'ng",
+            "Podsvetka Nomera", "Lampa H7", "Lampa H1", "Lampa LED Headlight",
+            "Signal Klakson", "Datchik Dozhdya", "Datchik Sveta", "Kamera Zadnego Vida",
+            "Parktronik Datchik", "Stekloochistitel Motor Oldi", "Stekloochistitel Motor Orqa", "Travers Stekloochistitelya",
+            "Dvornik Rychag Oldi Chap", "Dvornik Rychag Oldi O'ng", "Dvornik Rezina Komplekt", "Stekloomyvatel Nasos",
+            "Stekloomyvatel Bachok", "Forsunka Omyvatelya", "Stekloochistitel Orqa Dvornik", "Kapot",
+            "Kapot Petlya Chap", "Kapot Petlya O'ng", "Kapot Zamok", "Kapot Tross",
+            "Kapot Amortizator", "Krylo Oldi Chap", "Krylo Oldi O'ng", "Krylo Orqa Chap",
+            "Krylo Orqa O'ng", "Podkrylnik Oldi Chap", "Podkrylnik Oldi O'ng", "Podkrylnik Orqa Chap",
+            "Podkrylnik Orqa O'ng", "Bamper Oldi", "Bamper Orqa", "Bamper Reshotka Upper",
+            "Bamper Reshotka Lower", "Bamper Guba", "Bamper Molding Chap", "Bamper Molding O'ng",
+            "Usilitel Bampera Oldi", "Usilitel Bampera Orqa", "Dver Oldi Chap", "Dver Oldi O'ng",
+            "Dver Orqa Chap", "Dver Orqa O'ng", "Dver Zamok Oldi Chap", "Dver Zamok Oldi O'ng",
+            "Dver Zamok Orqa Chap", "Dver Zamok Orqa O'ng", "Dver Ruchka Tashqi Chap", "Dver Ruchka Tashqi O'ng",
+            "Dver Ruchka Ichki Chap", "Dver Ruchka Ichki O'ng", "Dver Petlya Chap", "Dver Petlya O'ng",
+            "Dver Uplotnitel", "Steklopodyomnik Motor Oldi Chap", "Steklopodyomnik Motor Oldi O'ng", "Steklopodyomnik Motor Orqa Chap",
+            "Steklopodyomnik Motor Orqa O'ng", "Steklopodyomnik Knopka", "Lobovoye Steklo", "Zadnee Steklo",
+            "Bokovoye Steklo Oldi Chap", "Bokovoye Steklo Oldi O'ng", "Bokovoye Steklo Orqa Chap", "Bokovoye Steklo Orqa O'ng",
+            "Zerkalo Tashqi Chap", "Zerkalo Tashqi O'ng", "Zerkalo Steklo Chap", "Zerkalo Steklo O'ng",
+            "Zerkalo Povtoritel", "Zerkalo Motorik", "Zerkalo Ichki Salon", "Krysha",
+            "Lyok Komplekt", "Bagazhnik Kryshka", "Bagazhnik Zamok", "Bagazhnik Tross",
+            "Bagazhnik Amortizator", "Bagazhnik Uplotnitel", "Torpeda Panel", "Kombinatsiya Priborov",
+            "Rul Koleso", "Rul Airbag", "Passajir Airbag", "Bokovoy Airbag Chap",
+            "Bokovoy Airbag O'ng", "Rul Shleyf", "Pereklyuchatel Podrulevoy Chap", "Pereklyuchatel Podrulevoy O'ng",
+            "Remen Bezopasnosti Oldi Chap", "Remen Bezopasnosti Oldi O'ng", "Remen Bezopasnosti Orqa", "Sidenye Oldi Chap",
+            "Sidenye Oldi O'ng", "Sidenye Orqa", "Podlokotnik", "Kovrik Salon Rezin",
+            "Kovrik Bagazhnik", "Shumoyizolyatsiya Kapot", "Shumoyizolyatsiya Dver", "Konditsioner Kompressor",
+            "Konditsioner Trubka Yuqori", "Konditsioner Trubka Quyi", "Konditsioner Isparitel", "Konditsioner TRV Klapan",
+            "Konditsioner Osushitel", "Disk Kolesny R15", "Disk Kolesny R16", "Disk Kolesny R17",
+            "Kolesny Bolt", "Kolesny Kolpak", "Zapasnoye Koleso", "Domkrat Shtatny",
+            "Ballon Klyuch", "Buksirovochny Kryuk", "Apteshka Komplekt", "Ognetushitel",
+            "Znak Avariyny", "Tros Buksir", "Zashchita Kartera Metall", "Zashchita Kartera Plastik",
+            "Bryzgovik Oldi Chap", "Bryzgovik Oldi O'ng", "Bryzgovik Orqa Chap", "Bryzgovik Orqa O'ng",
+            "Deflektor Okon Komplekt", "Deflektor Kapota", "Nakalivaniya Svecha (CNG)", "Gaz Reduktor (GBO)",
+            "Gaz Forsunka (GBO)", "Gaz Filtri (GBO)", "Gaz Ballon (GBO)", "Multiklapan (GBO)"
         ];
 
-        // Fill array to exactly 300 unique elements
-        let expandedPartNames = [];
-        for (let i = 0; i < 300; i++) {
-            let baseName = rawPartNames[i % rawPartNames.length];
-            let suffix = i >= rawPartNames.length ? ` Type-${Math.floor(i / rawPartNames.length) + 1}` : '';
-            expandedPartNames.push(`${baseName}${suffix}`);
-        }
-
-        const partsData = expandedPartNames.map((name, index) => ({
+        const partsData = rawPartNames.slice(0, 300).map((name, index) => ({
             id: index + 1,
             name: `LADA XRAY ${name}`,
+            price: "--- so'm",
             stock: 300,
-            img: "./images/xray.jpg"
+            img: "./images/xray-parts.jpg"
         }));
 
         function renderParts(data) {
@@ -140,8 +140,9 @@
                 card.innerHTML = `
                     <img src="${item.img}" alt="${item.name}">
                     <h3>${item.name}</h3>
+                    <div class="price">${item.price}</div>
                     <div class="stock">Soni: <span class="count">${item.stock}</span> ta bor</div>
-                    <button class="buy-btn" onclick="openOrder('${item.name.replace(/'/g, "\\'")}', this)">Sotib olish</button>
+                    <button class="buy-btn">Sotib olish</button>
                 `;
                 grid.appendChild(card);
             });
@@ -153,85 +154,9 @@
             renderParts(filtered);
         }
 
-        document.addEventListener("DOMContentLoaded", () => renderParts(partsData));
-
-        const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
-        const ADMIN_CHAT_ID = "8673898827"; 
-
-        let selectedProduct = "";
-        let currentStockElement = null;
-        let orderType = "pickup";
-
-        function openOrder(productName, btn) {
-            const card = btn.closest('.card');
-            currentStockElement = card.querySelector('.count');
-            let currentStock = parseInt(currentStockElement.textContent);
-            if (currentStock <= 0) { alert("Kechirasiz, ushbu mahsulot tugagan!"); return; }
-            selectedProduct = productName;
-            document.getElementById('modalTitle').textContent = selectedProduct + " - Buyurtma";
-            document.getElementById('orderModal').style.display = 'flex';
-        }
-
-        function closeOrderModal() { document.getElementById('orderModal').style.display = 'none'; }
-
-        function selectType(type) {
-            orderType = type;
-            const pickupBtn = document.getElementById('btnPickup');
-            const deliveryBtn = document.getElementById('btnDelivery');
-            const deliveryFields = document.querySelectorAll('.delivery-only');
-            if (type === 'pickup') {
-                pickupBtn.style.background = '#007bff'; pickupBtn.style.color = '#fff';
-                deliveryBtn.style.background = '#fff'; deliveryBtn.style.color = '#007bff';
-                deliveryFields.forEach(el => el.style.display = 'none');
-            } else {
-                deliveryBtn.style.background = '#007bff'; deliveryBtn.style.color = '#fff';
-                pickupBtn.style.background = '#fff'; pickupBtn.style.color = '#007bff';
-                deliveryFields.forEach(el => el.style.display = 'block');
-            }
-        }
-
-        async function handleOrderSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            if (currentStockElement) {
-                let currentStock = parseInt(currentStockElement.textContent);
-                if (currentStock > 0) currentStockElement.textContent = currentStock - 1;
-            }
-            if (orderType === 'pickup') {
-                const msg = `📦 NEW ORDER (O'ZIM OLIB KETAMAN)\nMahsulot: ${selectedProduct}\nIsm: ${name}\nTel: ${phone}`;
-                sendTelegramMessage(msg);
-                alert("Tasdiqlandi! Buyurtma 1 kun turadi va bekor bo'ladi.");
-                closeOrderModal();
-            } else {
-                const surname = document.getElementById('custSurname').value;
-                const email = document.getElementById('custEmail').value;
-                const card = document.getElementById('custCard').value;
-                const receiptFile = document.getElementById('custReceipt').files[0];
-                const msg = `🚚 NEW ORDER (YETKAZIB BERISH)\nMahsulot: ${selectedProduct}\nIsm-Familiya: ${name} ${surname}\nEmail: ${email}\nTel: ${phone}\nKarta: ${card}`;
-                if (receiptFile) sendTelegramPhotoWithButton(receiptFile, msg);
-                else sendTelegramMessage(msg);
-                alert("Buyurtmangiz qabul qilindi! Admin chekni va ma'lumotlarni tekshirib, telefoningizga tasdiqlash kodini yuboradi.");
-                closeOrderModal();
-            }
-        }
-
-        function sendTelegramMessage(text) {
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: ADMIN_CHAT_ID, text: text })
-            });
-        }
-
-        function sendTelegramPhotoWithButton(file, captionText) {
-            const formData = new FormData();
-            formData.append('chat_id', ADMIN_CHAT_ID);
-            formData.append('photo', file);
-            formData.append('caption', captionText);
-            const keyboard = { inline_keyboard: [[ { text: "✅ Tasdiqlash (Kod Yuborish)", callback_data: "send_code" } ]] };
-            formData.append('reply_markup', JSON.stringify(keyboard));
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: 'POST', body: formData });
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            renderParts(partsData);
+        });
     </script>
 </body>
 </html>
