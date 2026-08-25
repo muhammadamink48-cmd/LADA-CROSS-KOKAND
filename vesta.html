@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LADA Vesta Zapchastlari (300 xil zapchast)</title>
+    <title>LADA Vesta Zapchastlari</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background-color: #f4f6f8; padding: 20px; }
         .lada-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 10px; }
         .lada-top-center a { margin: 0 10px; color: #007bff; text-decoration: none; font-weight: bold; }
         .lada-top-right button { padding: 8px 16px; background: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
         .search-container { width: 100%; margin-bottom: 20px; }
         .search-container input { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; outline: none; }
+
         .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
         .card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
         .card h3 { font-size: 14px; margin: 10px 0 6px; color: #333; min-height: 38px; }
+        .card .price { font-size: 15px; color: #e63946; font-weight: bold; margin-bottom: 6px; }
         .card .stock { font-size: 13px; color: #28a745; font-weight: bold; margin-bottom: 10px; background-color: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
         .buy-btn { display: inline-block; border: none; cursor: pointer; background-color: #28a745; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
     </style>
@@ -23,7 +26,7 @@
 <body>
 
     <div class="lada-header">
-        <h2>LADA Vesta Zapchastlari (300 xil zapchast)</h2>
+        <h2>LADA Vesta Zapchastlari</h2>
         <div class="lada-top-center">
             <a href="https://t.me/telegram" target="_blank">Telegram</a>
             <a href="tel:+998901234567">Telefon</a>
@@ -39,48 +42,6 @@
 
     <div class="parts-grid" id="partsGrid"></div>
 
-    <!-- MODAL OYNA -->
-    <div class="modal-overlay" id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-        <div class="modal-content" style="background:#fff; width:90%; max-width:450px; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.3); position:relative; max-height:90vh; overflow-y:auto;">
-            <button type="button" class="close-modal" onclick="closeOrderModal()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; border:none; background:none;">&times;</button>
-            <h3 id="modalTitle" style="margin-bottom:15px; text-align:center;">Buyurtma rasmiylashtirish</h3>
-            
-            <div class="delivery-options" style="display:flex; gap:10px; margin-bottom:15px;">
-                <button type="button" class="option-btn active" id="btnPickup" onclick="selectType('pickup')" style="flex:1; padding:10px; border:2px solid #007bff; background:#007bff; color:#fff; border-radius:6px; font-weight:bold; cursor:pointer;">O'zim olib ketaman</button>
-                <button type="button" class="option-btn" id="btnDelivery" onclick="selectType('delivery')" style="flex:1; padding:10px; border:2px solid #007bff; background:#fff; color:#007bff; border-radius:6px; font-weight:bold; cursor:pointer;">Yetkazib berish</button>
-            </div>
-
-            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
-                <div class="form-group" style="margin-bottom:12px; text-align:left;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Ism:</label>
-                    <input type="text" id="custName" required placeholder="Ismingizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Familiya:</label>
-                    <input type="text" id="custSurname" placeholder="Familiyangizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group" style="margin-bottom:12px; text-align:left;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Telefon raqam:</label>
-                    <input type="tel" id="custPhone" required placeholder="+998901234567" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Email:</label>
-                    <input type="email" id="custEmail" placeholder="example@mail.com" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Plastik karta raqami:</label>
-                    <input type="text" id="custCard" placeholder="8600 **** **** ****" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
-                </div>
-                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
-                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">To'lov cheki (Rasm):</label>
-                    <input type="file" id="custReceipt" accept="image/*" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                </div>
-
-                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:6px; font-weight:bold; font-size:16px; cursor:pointer; margin-top:10px;">Buyurtmani tasdiqlash</button>
-            </form>
-        </div>
-    </div>
-
     <script>
         const rawPartNames = [
             "Oldi Amortizator Chap", "Oldi Amortizator O'ng", "Orqa Amortizator Chap", "Orqa Amortizator O'ng", 
@@ -92,9 +53,9 @@
             "Pylnik SHRUS Tashqi", "Pylnik SHRUS Ichki", "SHRUS Tashqi Chap", "SHRUS Tashqi O'ng",
             "SHRUS Ichki Chap", "SHRUS Ichki O'ng", "Moy Filtri", "Havo Filtri", "Salon Filtri", "Yoqilg'i Filtri",
             "Zajiganiye Svechasi", "Zajiganiye Katushkasi", "Vysokovoltny Provodlar", "GRM Kamari",
-            "GRM Rolik Netyajitel", "GRM Rolik Obvodnoy", "Naruq Kamar (General)", "Naruq Kamar Roligi",
+            "GRM Rolik Netyajitel", "GRM Rolik Obvodnoy", "Nartq Kamar (General)", "Naruq Kamar Roligi",
             "Suv Pompasi", "Termostat", "Termostat Korpus", "Radiator Dvigatel", "Radiator Konditsioner",
-            "Radiator Pechka", "Ventiya radiator", "Ventiya Konditsioner", "Pechka Motori", "Pechka Rezistori",
+            "Radiator Pechka", "Ventilator Radiator", "Ventilator Konditsioner", "Pechka Motori", "Pechka Rezistori",
             "Glushitel Oldi Qismi", "Glushitel O'rta Qismi", "Glushitel Orqa Qismi", "Katalizator",
             "Gofra Glushitel", "Lyambda Zond Yuqori", "Lyambda Zond Quyi", "Kollektor Prokladkasi",
             "GBL Prokladkasi", "Klapannaya Kryshka Prokladkasi", "Maslosyomniy Kolpachoklar", "Porshenlar Jamlanmasi",
@@ -118,19 +79,19 @@
             "Mahovik", "Mahovik Bolts", "KPP Val Pervichny", "KPP Val Vtorichny",
             "KPP Shesternya 1-Peredacha", "KPP Shesternya 2-Peredacha", "KPP Shesternya 3-Peredacha", "KPP Shesternya 4-Peredacha",
             "KPP Shesternya 5-Peredacha", "Sinhronizator 1-2 Peredacha", "Sinhronizator 3-4 Peredacha", "Sinhronizator 5-Peredacha",
-            "KPP Salnik Pervichnogo Vala", "KPP Salnik Privoda Chap", "KPP Salnik Privoda O'ng", "Kulasha KPP",
-            "Tross KPP Vybor Peredach", "Rychag KPP", "Kulyasa Remkomplekt", "Generator",
+            "KPP Salnik Pervichnogo Vala", "KPP Salnik Privoda Chap", "KPP Salnik Privoda O'ng", "Kulasa KPP",
+            "Tross KPP Vybor Peredach", "Rychag KPP", "Kulasa Remkomplekt", "Generator",
             "Generator Diodny Most", "Generator Rele Regulator", "Generator Podshipnik Oldi", "Generator Podshipnik Orqa",
             "Starter", "Starter Vtyagivayushcheye Rele", "Starter Bendiks", "Starter Shchyotkasi",
-            "Akfumulyator", "Klemma Akumulyatora Plus", "Klemma Akumulyatora Minus", "Zamok Zajiganiya",
-            "Klyuch Zajiganiya", "Blok Preduhraniteley", "Rele Klonitsa", "Rele Benzonasosa",
+            "Akkumulyator", "Klemma Akkumulyatora Plus", "Klemma Akkumulyatora Minus", "Zamok Zajiganiya",
+            "Klyuch Zajiganiya", "Blok Preduhraniteley", "Rele Karlsona", "Rele Benzonasosa",
             "Fara Oldi Chap", "Fara Oldi O'ng", "Protivotumannaya Fara Chap", "Protivotumannaya Fara O'ng",
             "Fonar Orqa Chap", "Fonar Orqa O'ng", "Povtoritel Povorota Chap", "Povtoritel Povorota O'ng",
             "Podsvetka Nomera", "Lampa H7", "Lampa H1", "Lampa LED Headlight",
             "Signal Klakson", "Datchik Dozhdya", "Datchik Sveta", "Kamera Zadnego Vida",
             "Parktronik Datchik", "Stekloochistitel Motor Oldi", "Stekloochistitel Motor Orqa", "Travers Stekloochistitelya",
             "Dvornik Rychag Oldi Chap", "Dvornik Rychag Oldi O'ng", "Dvornik Rezina Komplekt", "Stekloomyvatel Nasos",
-            "Stekloomyvatel Bachok", "Fortsunka Omyvatelya", "Stekloochistitel Orqa Dvornik", "Kapot",
+            "Stekloomyvatel Bachok", "Forsunka Omyvatelya", "Stekloochistitel Orqa Dvornik", "Kapot",
             "Kapot Petlya Chap", "Kapot Petlya O'ng", "Kapot Zamok", "Kapot Tross",
             "Kapot Amortizator", "Krylo Oldi Chap", "Krylo Oldi O'ng", "Krylo Orqa Chap",
             "Krylo Orqa O'ng", "Podkrylnik Oldi Chap", "Podkrylnik Oldi O'ng", "Podkrylnik Orqa Chap",
@@ -156,15 +117,16 @@
             "Konditsioner Osushitel", "Disk Kolesny R15", "Disk Kolesny R16", "Disk Kolesny R17",
             "Kolesny Bolt", "Kolesny Kolpak", "Zapasnoye Koleso", "Domkrat Shtatny",
             "Ballon Klyuch", "Buksirovochny Kryuk", "Apteshka Komplekt", "Ognetushitel",
-            "Znak Avariyny", "Trots Buksir", "Zashchita Kartera Metall", "Zashchita Kartera Plastik",
+            "Znak Avariyny", "Tros Buksir", "Zashchita Kartera Metall", "Zashchita Kartera Plastik",
             "Bryzgovik Oldi Chap", "Bryzgovik Oldi O'ng", "Bryzgovik Orqa Chap", "Bryzgovik Orqa O'ng",
             "Deflektor Okon Komplekt", "Deflektor Kapota", "Nakalivaniya Svecha (CNG)", "Gaz Reduktor (GBO)",
-            "Gaz Forsunka (GBO)", "Gaz Filtri (GBO)", "Gaz Balti (GBO)", "Multiklapan (GBO)"
+            "Gaz Forsunka (GBO)", "Gaz Filtri (GBO)", "Gaz Ballon (GBO)", "Multiklapan (GBO)"
         ];
 
         const partsData = rawPartNames.slice(0, 300).map((name, index) => ({
             id: index + 1,
             name: `LADA Vesta ${name}`,
+            price: "--- so'm", // Narx joyi saqlab qolindi
             stock: 300,
             img: "./images/vesta-fara.jpg"
         }));
@@ -178,8 +140,9 @@
                 card.innerHTML = `
                     <img src="${item.img}" alt="${item.name}">
                     <h3>${item.name}</h3>
+                    <div class="price">${item.price}</div>
                     <div class="stock">Soni: <span class="count">${item.stock}</span> ta bor</div>
-                    <button class="buy-btn" onclick="openOrder('${item.name.replace(/'/g, "\\'")}', this)">Sotib olish</button>
+                    <button class="buy-btn">Sotib olish</button>
                 `;
                 grid.appendChild(card);
             });
@@ -191,85 +154,9 @@
             renderParts(filtered);
         }
 
-        document.addEventListener("DOMContentLoaded", () => renderParts(partsData));
-
-        const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
-        const ADMIN_CHAT_ID = "8673898827"; 
-
-        let selectedProduct = "";
-        let currentStockElement = null;
-        let orderType = "pickup";
-
-        function openOrder(productName, btn) {
-            const card = btn.closest('.card');
-            currentStockElement = card.querySelector('.count');
-            let currentStock = parseInt(currentStockElement.textContent);
-            if (currentStock <= 0) { alert("Kechirasiz, ushbu mahsulot tugagan!"); return; }
-            selectedProduct = productName;
-            document.getElementById('modalTitle').textContent = selectedProduct + " - Buyurtma";
-            document.getElementById('orderModal').style.display = 'flex';
-        }
-
-        function closeOrderModal() { document.getElementById('orderModal').style.display = 'none'; }
-
-        function selectType(type) {
-            orderType = type;
-            const pickupBtn = document.getElementById('btnPickup');
-            const deliveryBtn = document.getElementById('btnDelivery');
-            const deliveryFields = document.querySelectorAll('.delivery-only');
-            if (type === 'pickup') {
-                pickupBtn.style.background = '#007bff'; pickupBtn.style.color = '#fff';
-                deliveryBtn.style.background = '#fff'; deliveryBtn.style.color = '#007bff';
-                deliveryFields.forEach(el => el.style.display = 'none');
-            } else {
-                deliveryBtn.style.background = '#007bff'; deliveryBtn.style.color = '#fff';
-                pickupBtn.style.background = '#fff'; pickupBtn.style.color = '#007bff';
-                deliveryFields.forEach(el => el.style.display = 'block');
-            }
-        }
-
-        async function handleOrderSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            if (currentStockElement) {
-                let currentStock = parseInt(currentStockElement.textContent);
-                if (currentStock > 0) currentStockElement.textContent = currentStock - 1;
-            }
-            if (orderType === 'pickup') {
-                const msg = `📦 NEW ORDER (O'ZIM OLIB KETAMAN)\nMahsulot: ${selectedProduct}\nIsm: ${name}\nTel: ${phone}`;
-                sendTelegramMessage(msg);
-                alert("Tasdiqlandi! Buyurtma 1 kun turadi va bekor bo'ladi.");
-                closeOrderModal();
-            } else {
-                const surname = document.getElementById('custSurname').value;
-                const email = document.getElementById('custEmail').value;
-                const card = document.getElementById('custCard').value;
-                const receiptFile = document.getElementById('custReceipt').files[0];
-                const msg = `🚚 NEW ORDER (YETKAZIB BERISH)\nMahsulot: ${selectedProduct}\nIsm-Familiya: ${name} ${surname}\nEmail: ${email}\nTel: ${phone}\nKarta: ${card}`;
-                if (receiptFile) sendTelegramPhotoWithButton(receiptFile, msg);
-                else sendTelegramMessage(msg);
-                alert("Buyurtmangiz qabul qilindi! Admin chekni va ma'lumotlarni tekshirib, telefoningizga tasdiqlash kodini yuboradi.");
-                closeOrderModal();
-            }
-        }
-
-        function sendTelegramMessage(text) {
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: ADMIN_CHAT_ID, text: text })
-            });
-        }
-
-        function sendTelegramPhotoWithButton(file, captionText) {
-            const formData = new FormData();
-            formData.append('chat_id', ADMIN_CHAT_ID);
-            formData.append('photo', file);
-            formData.append('caption', captionText);
-            const keyboard = { inline_keyboard: [[ { text: "✅ Tasdiqlash (Kod Yuborish)", callback_data: "send_code" } ]] };
-            formData.append('reply_markup', JSON.stringify(keyboard));
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: 'POST', body: formData });
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            renderParts(partsData);
+        });
     </script>
 </body>
 </html>
