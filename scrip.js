@@ -332,3 +332,197 @@ function submitCarAd(e) {
     alert("Tabriklaymiz! Mashina e'loningiz muvaffaqiyatli qabul qilindi va sayt hamda Telegram botda e'lon qilindi!");
     document.getElementById("ad-form-modal").remove();
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+    const closeBtn = document.getElementById("close-btn");
+
+    // Sahifa ochilganda oldin saqlangan e'lonlarni chiqarish
+    loadSavedAds();
+
+    // ------------------- QIDIRUV FUNKSIYASI -------------------
+    function performSearch() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+        const cards = document.querySelectorAll(
+            ".lada-bottom-left, .lada-bottom-center, .lada-bottom-right, .lada-bottom-priora, .lada-bottom-granta, .l09, .dynamic-car-card"
+        );
+
+        cards.forEach(card => {
+            const titleElement = card.querySelector("h2");
+            const textElement = card.querySelector("p");
+            
+            const title = titleElement ? titleElement.textContent.toLowerCase() : "";
+            const text = textElement ? textElement.textContent.toLowerCase() : "";
+
+            if (title.includes(query) || text.includes(query)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    if (searchBtn) searchBtn.addEventListener("click", performSearch);
+    if (searchInput) {
+        searchInput.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") performSearch();
+        });
+        searchInput.addEventListener("input", performSearch);
+    }
+
+    // ------------------- MASHINA E'LONINI QO'YISH FORMASI -------------------
+    const btnAd = document.querySelector(".btn-ad");
+    if (btnAd) {
+        btnAd.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            // Premium va chiroyli Modal Dizayni
+            const modalHtml = `
+                <div id="car-ad-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); backdrop-filter: blur(5px); display:flex; align-items:center; justify-content:center; z-index:9999; overflow-y:auto; padding:20px;">
+                    <div style="background:#ffffff; padding:35px; border-radius:20px; max-width:550px; width:100%; box-shadow:0 15px 35px rgba(0,0,0,0.3); position:relative; max-height:90vh; overflow-y:auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        
+                        <span id="close-modal" style="position:absolute; right:22px; top:18px; cursor:pointer; font-size:26px; font-weight:bold; color:#aaa; transition:0.2s;">&times;</span>
+                        
+                        <div style="text-align:center; margin-bottom:20px;">
+                            <h2 style="color:#ff6b00; margin:0 0 5px 0; font-size:24px;">🚗 Mashina E'lonini Joylash</h2>
+                            <p style="font-size:13px; color:#555; background:#fff8f3; padding:10px; border-radius:8px; border:1px dashed #ffb380; margin:10px 0 0 0;">
+                                To'lov narxi: <b>5 000 so'm</b><br>Karta raqami: <span style="color:#d9534f; font-weight:bold; font-size:15px;">+998916957959</span>
+                            </p>
+                        </div>
+
+                        <form id="car-form" style="display:flex; flex-direction:column; gap:14px; text-align:left;">
+                            
+                            <div>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina nomi va rusumi:</label>
+                                <input type="text" id="car-title" placeholder="Masalan: Lada Vesta Cross" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; transition:0.3s;">
+                            </div>
+
+                            <div style="display:flex; gap:12px;">
+                               <div style="flex:1;">
+                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Yili:</label>
+                                    <input type="text" id="car-year" placeholder="2022 yil" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
+                                </div>
+                                <div style="flex:1;">
+                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Narxi:</label>
+                                    <input type="text" id="car-price" placeholder="12 000 $" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Telefon raqamingiz:</label>
+                                <input type="tel" id="car-phone" value="+998" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
+                            </div>
+
+                            <div>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina haqida ma'lumot:</label>
+                                <textarea id="car-desc" rows="3" placeholder="Holati, kraskasi, yurgani..." required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; resize:vertical;"></textarea>
+                            </div>
+
+                            <div>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina rasmi yoki To'lov cheki:</label>
+                                <input type="file" id="car-image" accept="image/*" required style="width:100%; padding:8px; border:1px dashed #ccc; border-radius:8px; background:#fafafa; font-size:13px; cursor:pointer;">
+                            </div>
+
+                            <button type="submit" style="width:100%; background:linear-gradient(135deg, #ff6b00, #ff8c00); color:#fff; border:none; padding:13px; font-weight:bold; border-radius:8px; cursor:pointer; font-size:16px; margin-top:5px; box-shadow:0 4px 10px rgba(255,107,0,0.3); transition:0.3s;">
+                                🚀 Pryamoy Saytga Qo'shish
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML("beforeend", modalHtml);
+
+            document.getElementById("close-modal").onclick = () => {
+                document.getElementById("car-ad-modal").remove();
+            };
+
+            // Form yuborilganda ishlash jarayoni
+            document.getElementById("car-form").onsubmit = (event) => {
+                event.preventDefault();
+
+                const imageInput = document.getElementById("car-image");
+                const file = imageInput.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageUrl = e.target.result;
+
+                        const carData = {
+                            title: document.getElementById("car-title").value,
+                            year: document.getElementById("car-year").value,
+                            price: document.getElementById("car-price").value,
+                            phone: document.getElementById("car-phone").value,
+                            desc: document.getElementById("car-desc").value,
+                            image: imageUrl
+                        };
+
+                        // 1. Saytga chiqarish va xotiraga saqlash
+                        saveCarToStorage(carData);
+                        appendCarCard(carData);
+
+                        // 2. Telegram orqali adminga xabar yuborish uchun tayyorlash
+                        const messageText = `🚗 YANGI E'LON VA RASM/CHEK!\n\n` +
+                                            `📌 Mashina: ${carData.title} (${carData.year})\n` +
+                                            `💰 Narxi: ${carData.price}\n` +
+                                            `📞 Tel: ${carData.phone}\n` +
+                                            `📝 Ma'lumot: ${carData.desc}\n\n` +
+                                            `To'lov: +998916957959 raqamiga 5000 so'm to'landi.`;
+
+                        const telegramUrl = `https://t.me/muhammadamin_0330?text=${encodeURIComponent(messageText)}`;
+                        
+                        window.open(telegramUrl, '_blank');
+                        document.getElementById("car-ad-modal").remove();
+                        alert("E'loningiz muvaffaqiyatli saytga qo'shildi! Shuningdek, ma'lumotlarni tasdiqlash uchun Telegram ochildi.");
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            alert("Do'kon hozirda yopiq.");
+        });
+    }
+});
+
+// Chiroyli e'lon kartasini HTML ga qo'shish funksiyasi
+function appendCarCard(car) {
+    const marketSection = document.querySelector(".car-market");
+    if (!marketSection) return;
+    
+    const cardHtml = `
+        <div class="dynamic-car-card" style="background:white; border-radius:15px; overflow:hidden; box-shadow:0 6px 15px rgba(0,0,0,0.08); margin:20px 0; border:1px solid #eee; display:flex; flex-direction:column; max-width:100%; transition: 0.3s;">
+            ${car.image ? `<img src="${car.image}" style="width:100%; height:250px; object-fit:cover;" alt="Mashina rasmi">` : ''}
+            <div style="padding:20px; text-align:left;">
+                <h2 style="margin:0 0 10px 0; color:#222; font-size:20px;">${car.title} <span style="color:#777; font-size:16px;">(${car.year})</span></h2>
+                <p style="color:#28a745; font-weight:bold; font-size:20px; margin:5px 0 12px 0;">${car.price}</p>
+                <p style="color:#555; font-size:14px; line-height:1.5; margin-bottom:15px;">${car.desc}</p>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; pt-10; padding-top:12px;">
+                    <span style="font-size:14px; color:#666;">Aloqa:</span>
+                    <a href="tel:${car.phone}" style="background:#28a745; color:white; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:14px; box-shadow:0 3px 6px rgba(40,167,69,0.3);">📞 ${car.phone}</a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    marketSection.insertAdjacentHTML("beforebegin", cardHtml);
+}
+
+// Brauzer xotirasiga (LocalStorage) saqlash
+function saveCarToStorage(car) {
+    let cars = JSON.parse(localStorage.getItem("userCars")) || [];
+    cars.push(car);
+    localStorage.setItem("userCars", JSON.stringify(cars));
+}
+
+// Saqlangan e'lonlarni o'qib chiqarish
+function loadSavedAds() {
+    let cars = JSON.parse(localStorage.getItem("userCars")) || [];
+    cars.forEach(car => {
+        appendCarCard(car);
+    });
+}
