@@ -146,3 +146,50 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 </script>
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+    const closeBtn = document.getElementById("close-btn");
+
+    // Qidiruv funksiyasi
+    function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        
+        // Qidiriladigan barcha mashina kartochkalari
+        const cards = document.querySelectorAll(
+            ".lada-bottom-left, .lada-bottom-center, .lada-bottom-right, .lada-bottom-priora, .lada-bottom-granta, .l09"
+        );
+
+        cards.forEach(card => {
+            const title = card.querySelector("h2").textContent.toLowerCase();
+            const text = card.querySelector("p").textContent.toLowerCase();
+
+            // Agar qidiruv so'zi sarlavha yoki matnda bo'lsa ko'rsatiladi, aks holda yashiriladi
+            if (title.includes(query) || text.includes(query)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    // Qidiruv tugmasi bosilganda
+    searchBtn.addEventListener("click", performSearch);
+
+    // Klaviaturada Enter bosilganda qidirish
+    searchInput.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+            performSearch();
+        }
+    });
+
+    // Yozish davomida avtomoyik filtrlash
+    searchInput.addEventListener("input", performSearch);
+
+    // "Closed" tugmasi bosilganda xabar chiqarish
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            alert("Do'kon hozirda yopiq yoki ish vaqti tugagan.");
+        });
+    }
+});
