@@ -3,99 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LADA Granta Zapchastlari</title>
+    <title>LADA Granta Zapchastlari (300 xil zapchast)</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         body { background-color: #f4f6f8; padding: 20px; }
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .back-btn { text-decoration: none; color: #fff; background-color: #007bff; padding: 10px 18px; border-radius: 6px; font-weight: bold; }
+        .lada-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; background: #fff; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 10px; }
+        .lada-top-center a { margin: 0 10px; color: #007bff; text-decoration: none; font-weight: bold; }
+        .lada-top-right button { padding: 8px 16px; background: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .search-container { width: 100%; margin-bottom: 20px; }
+        .search-container input { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; outline: none; }
         .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        .card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; }
-        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-        .card h3 { font-size: 16px; margin: 12px 0 8px; color: #333; height: 40px; }
-        .card .price { font-size: 16px; color: #e63946; font-weight: bold; margin-bottom: 12px; }
-        .buy-btn { display: inline-block; text-decoration: none; background-color: #28a745; color: #fff; padding: 8px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
+        .card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
+        .card h3 { font-size: 14px; margin: 10px 0 6px; color: #333; min-height: 38px; }
+        .card .stock { font-size: 13px; color: #28a745; font-weight: bold; margin-bottom: 10px; background-color: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        .buy-btn { display: inline-block; border: none; cursor: pointer; background-color: #28a745; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html" class="back-btn">← Bosh sahifa</a>
-        <h2>LADA Granta Zapchastlari</h2>
+
+    <div class="lada-header">
+        <h2>LADA Granta Zapchastlari (300 xil zapchast)</h2>
+        <div class="lada-top-center">
+            <a href="https://t.me/telegram" target="_blank">Telegram</a>
+            <a href="tel:+998901234567">Telefon</a>
+        </div>
+        <div class="lada-top-right">
+            <button onclick="window.location.href='index.html'">Yopish</button>
+        </div>
     </div>
 
-    <div class="parts-grid">
-        <div class="card">
-            <img src="./images/granta-fara.jpg" alt="Granta FL Oldi Fara">
-            <h3>Granta FL Oldi Fara</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-stop.jpg" alt="Orqa Stop Fara">
-            <h3>Orqa Stop Fara</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-bamper-oldi.jpg" alt="Oldi Bamper">
-            <h3>Granta FL Oldi Bamper</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-radiator.jpg" alt="Radiator">
-            <h3>Sovitish Radiatori</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-kolodka.jpg" alt="Oldi Kolodka">
-            <h3>Oldi Tormoz Kolodkasi</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-amortizator.jpg" alt="Amortizator">
-            <h3>Oldi Amortizator Stoyka</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-sharovaya.jpg" alt="Sharovaya Opora">
-            <h3>Sharovaya Opora</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-grm.jpg" alt="GRM Remen">
-            <h3>GRM Remen To'plami</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-termostat.jpg" alt="Termostat">
-            <h3>Termostat Jamlanmasi</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-granata.jpg" alt="Granata">
-            <h3>Tashqi Granata (ShRUS)</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-filtrlar.jpg" alt="Filtrlar">
-            <h3>Moy va Havo Filtri Jamlanmasi</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
-        </div>
-        <div class="card">
-            <img src="./images/granta-reshetka.jpg" alt="Radiator Reshetka">
-            <h3>Radiator Reshetkasi</h3>
-            <div class="price">... so'm</div>
-            <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="buy-btn">Sotib olish</a>
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterParts()" placeholder="Zapchast nomi bo'yicha qidiruv...">
+    </div>
+
+    <div class="parts-grid" id="partsGrid"></div>
+
+    <!-- MODAL OYNA -->
+    <div class="modal-overlay" id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+        <div class="modal-content" style="background:#fff; width:90%; max-width:450px; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.3); position:relative; max-height:90vh; overflow-y:auto;">
+            <button type="button" class="close-modal" onclick="closeOrderModal()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; border:none; background:none;">&times;</button>
+            <h3 id="modalTitle" style="margin-bottom:15px; text-align:center;">Buyurtma rasmiylashtirish</h3>
+            
+            <div class="delivery-options" style="display:flex; gap:10px; margin-bottom:15px;">
+                <button type="button" class="option-btn active" id="btnPickup" onclick="selectType('pickup')" style="flex:1; padding:10px; border:2px solid #007bff; background:#007bff; color:#fff; border-radius:6px; font-weight:bold; cursor:pointer;">O'zim olib ketaman</button>
+                <button type="button" class="option-btn" id="btnDelivery" onclick="selectType('delivery')" style="flex:1; padding:10px; border:2px solid #007bff; background:#fff; color:#007bff; border-radius:6px; font-weight:bold; cursor:pointer;">Yetkazib berish</button>
+            </div>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="form-group" style="margin-bottom:12px; text-align:left;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Ism:</label>
+                    <input type="text" id="custName" required placeholder="Ismingizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Familiya:</label>
+                    <input type="text" id="custSurname" placeholder="Familiyangizni kiriting" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group" style="margin-bottom:12px; text-align:left;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Telefon raqam:</label>
+                    <input type="tel" id="custPhone" required placeholder="+998901234567" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Email:</label>
+                    <input type="email" id="custEmail" placeholder="example@mail.com" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">Plastik karta raqami:</label>
+                    <input type="text" id="custCard" placeholder="8600 **** **** ****" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+                </div>
+                <div class="form-group delivery-only" style="margin-bottom:12px; text-align:left; display:none;">
+                    <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px;">To'lov cheki (Rasm):</label>
+                    <input type="file" id="custReceipt" accept="image/*" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                </div>
+
+                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:6px; font-weight:bold; font-size:16px; cursor:pointer; margin-top:10px;">Buyurtmani tasdiqlash</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        const rawPartNames = [
+            "Oldi Amortizator Stoyka 2190 Granta Chap", "Oldi Amortizator Stoyka 2190 Granta O'ng", "Orqa Amortizator Granta 2190", "Opordny Podshipnik Granta 2190",
+            "Prujina Oldi Granta 2190", "Prujina Orqa Granta", "Oldi Tormoz Kolodka Granta 8V/16V", "Orqa Tormoz Kolodka Baraban Granta",
+            "Tormoz Diski Ventilyatsiyali R14 Granta", "Baraban Tormoz Orqa Alyumin 2190", "Sharavoy Opora 2190 Heavy Duty", "Rulevoy Tyaga Granta EUR",
+            "Rulevoy Nakonechnik Chap 2190", "Rulevoy Nakonechnik O'ng 2190", "Stabilizator Stoyka Granta FL", "Stabilizator Vtulka Granta",
+            "Rychag Oldi Trehugolny Granta", "Saylentblok Rychag 2190", "Pylnik SHRUS Silicon Granta", "SHRUS Tashqi 2190 ABS",
+            "SHRUS Ichki 2190 Trioid", "Moy Filtri 2108-2190", "Havo Filtri 2112 Panel Granta", "Salon Filtri Granta 2190",
+            "Yoqilg'i Filtri Bystros'yom 2190", "Svecha Zajiganiya 8V 21116", "Katushka Zajiganiya 8V 2111", "GRM Kamar Gates 21116 (Bez Vtek)",
+            "GRM Rolik Netyajnoy INA 21116", "Generator Kamar 6PK Granta", "Suv Pompasi TZA Premium 21116", "Termostat Granta Granovskiy 2190",
+            "Radiator Dvigatel Granta 2190", "Radiator Konditsioner Granta FL", "Pechka Radiator Granta", "Ventilyator Radiator Monoblok",
+            "Pechka Motor Granta 2190", "Glushitel Rezonator 2190 E-Gas", "Glushitel Orqa Granta Liftback/Sedan", "Pauk Exhaust 4-1 Granta",
+            "Lyambda Zond Bosch 2190", "GBL Prokladka Metall 21116", "Klapannaya Kryshka Prokladka 8V Silicon", "Porshen 82.0 21116 Bez Vtek",
+            "Porshen Koltso Prima Granta", "Shatun Granta 21116 Light", "Vkladish Shatun 21116 STD", "Vkladish Korennoy 2108 STD",
+            "Kolenval 21116", "Salnik Kolenval Oldi Victor Reinz", "Salnik Kolenval Orqa Victor Reinz", "Rasspredval 21116 8V",
+            "Klapan Vpusk 21116 8V", "Klapan Vypusk 21116 8V", "Maslyanoy Nasos 2112 Granta", "Karter Poddon 2108 Granta",
+            "Podushka Dvigatel Prava 2190", "Podushka Dvigatel Leva 2190", "Podushka Dvigatel Gitara Granta", "Datchik Kolenval 2190",
+            "Datchik Rasspredval 2190 8V", "Datchik Detonatsii 2190", "Datchik Davleniya Masla Granta", "Datchik Temperatury 2190",
+            "Datchik ABS Oldi Granta", "Datchik ABS Orqa Granta", "Drosselnaya Zaslonka E-Gas Granta", "Forsunka Toplivnaya Bosch Granta",
+            "Benzonasos Modul 2190 Granta", "Vakuumny Usilitel Tormozov Granta", "Glavny Tormoznoy Tsilindr 2190", "Support Oldi Chap R14 Granta",
+            "Support Oldi O'ng R14 Granta", "Ruchnik Tross Granta Set", "Rulevaya Reyka EUR Granta FL", "EUR Blok Upravleniya Granta",
+            "Stsepleniye Komplekt LUK 2190 Trosovaya KPP", "Vyzhimnoy Podshipnik 2190", "Mahovik 21116", "KPP Salnik Pervichny Val 2190",
+            "KPP Salnik Privod 2190", "Generator 115A Granta FL", "Starter 2190 Trosovaya KPP", "Akumulyator 60Ah Granta",
+            "Zamok Zajiganiya Granta", "Fara Oldi Chap Granta FL", "Fara Oldi O'ng Granta FL", "Protivotumannaya Fara Granta FL",
+            "Fonar Orqa LED Granta Liftback", "Dvornik Motor Granta", "Kapot Granta FL", "Krylo Oldi Chap Granta FL",
+            "Bamper Oldi Granta FL X-Style", "Bamper Orqa Granta FL", "Dver Oldi Chap Granta", "Dver Oldi O'ng Granta",
+            "Steklopodyomnik Reekny Granta", "Lobovoye Steklo Obogrev Granta", "Zerkalo FL Style Elektro", "Torpeda Panel Granta FL",
+            "Airbag Rul Granta FL", "Konditsioner Kompressor Granta", "Disk R15 Drive Active Alyumin", "Zashchita Kartera Metall 2mm Granta"
+        ];
+
+        let expandedPartNames = [];
+        for (let i = 0; i < 300; i++) {
+            let baseName = rawPartNames[i % rawPartNames.length];
+            let suffix = i >= rawPartNames.length ? ` Type-${Math.floor(i / rawPartNames.length) + 1}` : '';
+            expandedPartNames.push(`${baseName}${suffix}`);
+        }
+
+        const partsData = expandedPartNames.map((name, index) => ({
+            id: index + 1,
+            name: `LADA Granta ${name}`,
+            stock: 300,
+            img: "./images/granta.jpg"
+        }));
+
+        function renderParts(data) {
+            const grid = document.getElementById('partsGrid');
+            grid.innerHTML = "";
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <div class="stock">Soni: <span class="count">${item.stock}</span> ta bor</div>
+                    <button class="buy-btn" onclick="openOrder('${item.name.replace(/'/g, "\\'")}', this)">Sotib olish</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterParts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = partsData.filter(item => item.name.toLowerCase().includes(query));
+            renderParts(filtered);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => renderParts(partsData));
+
+        const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
+        const ADMIN_CHAT_ID = "8673898827"; 
+
+        let selectedProduct = "";
+        let currentStockElement = null;
+        let orderType = "pickup";
+
+        function openOrder(productName, btn) {
+            const card = btn.closest('.card');
+            currentStockElement = card.querySelector('.count');
+            let currentStock = parseInt(currentStockElement.textContent);
+            if (currentStock <= 0) { alert("Kechirasiz, ushbu mahsulot tugagan!"); return; }
+            selectedProduct = productName;
+            document.getElementById('modalTitle').textContent = selectedProduct + " - Buyurtma";
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() { document.getElementById('orderModal').style.display = 'none'; }
+
+        function selectType(type) {
+            orderType = type;
+            const pickupBtn = document.getElementById('btnPickup');
+            const deliveryBtn = document.getElementById('btnDelivery');
+            const deliveryFields = document.querySelectorAll('.delivery-only');
+            if (type === 'pickup') {
+                pickupBtn.style.background = '#007bff'; pickupBtn.style.color = '#fff';
+                deliveryBtn.style.background = '#fff'; deliveryBtn.style.color = '#007bff';
+                deliveryFields.forEach(el => el.style.display = 'none');
+            } else {
+                deliveryBtn.style.background = '#007bff'; deliveryBtn.style.color = '#fff';
+                pickupBtn.style.background = '#fff'; pickupBtn.style.color = '#007bff';
+                deliveryFields.forEach(el => el.style.display = 'block');
+            }
+        }
+
+        async function handleOrderSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            if (currentStockElement) {
+                let currentStock = parseInt(currentStockElement.textContent);
+                if (currentStock > 0) currentStockElement.textContent = currentStock - 1;
+            }
+            if (orderType === 'pickup') {
+                const msg = `📦 NEW ORDER (O'ZIM OLIB KETAMAN)\nMahsulot: ${selectedProduct}\nIsm: ${name}\nTel: ${phone}`;
+                sendTelegramMessage(msg);
+                alert("Tasdiqlandi! Buyurtma 1 kun turadi va bekor bo'ladi.");
+                closeOrderModal();
+            } else {
+                const surname = document.getElementById('custSurname').value;
+                const email = document.getElementById('custEmail').value;
+                const card = document.getElementById('custCard').value;
+                const receiptFile = document.getElementById('custReceipt').files[0];
+                const msg = `🚚 NEW ORDER (YETKAZIB BERISH)\nMahsulot: ${selectedProduct}\nIsm-Familiya: ${name} ${surname}\nEmail: ${email}\nTel: ${phone}\nKarta: ${card}`;
+                if (receiptFile) sendTelegramPhotoWithButton(receiptFile, msg);
+                else sendTelegramMessage(msg);
+                alert("Buyurtmangiz qabul qilindi! Admin chekni va ma'lumotlarni tekshirib, telefoningizga tasdiqlash kodini yuboradi.");
+                closeOrderModal();
+            }
+        }
+
+        function sendTelegramMessage(text) {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: ADMIN_CHAT_ID, text: text })
+            });
+        }
+
+        function sendTelegramPhotoWithButton(file, captionText) {
+            const formData = new FormData();
+            formData.append('chat_id', ADMIN_CHAT_ID);
+            formData.append('photo', file);
+            formData.append('caption', captionText);
+            const keyboard = { inline_keyboard: [[ { text: "✅ Tasdiqlash (Kod Yuborish)", callback_data: "send_code" } ]] };
+            formData.append('reply_markup', JSON.stringify(keyboard));
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: 'POST', body: formData });
+        }
+    </script>
 </body>
 </html>
