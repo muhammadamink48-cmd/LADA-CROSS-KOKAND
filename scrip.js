@@ -1,7 +1,131 @@
 // ==========================================
-// 1. UMUMIY SAHIFA FUNKSIYALARI (Qidiruv va Havolalar)
+// 1. KENGAYTIRILGAN LUG'AT BAZASI (Kril, Lotin, Rus, Ingliz, Turk, Arab)
+// ==========================================
+const translations = {
+    uz_lat: {
+        searchPlaceholder: "Mashina yoki e'lonlarni qidirish...",
+        searchBtn: "Qidirish",
+        adBtn: "🚗 Mashina E'lonini Joylash",
+        buyBtn: "Sotib olish",
+        carModalTitle: "🚗 Mashina E'lonini Joylash",
+        carNameLabel: "Mashina nomi va rusumi:",
+        carYearLabel: "Yili:",
+        carPriceLabel: "Narxi:",
+        carDescLabel: "Mashina haqida ma'lumot:",
+        carImageLabel: "Mashina rasmi yoki To'lov cheki:",
+        carSubmitBtn: "🚀 Saytga E'lon Qo'shish",
+        successAlert: "E'loningiz muvaffaqiyatli qo'shildi!"
+    },
+    uz_kir: {
+        searchPlaceholder: "Машина ёки эълонларни қидириш...",
+        searchBtn: "Қидириш",
+        adBtn: "🚗 Машина Эълонини Жойлаш",
+        buyBtn: "Сотиб олиш",
+        carModalTitle: "🚗 Машина Эълонини Жойлаш",
+        carNameLabel: "Машина номи ва русуми:",
+        carYearLabel: "Йили:",
+        carPriceLabel: "Нархи:",
+        carDescLabel: "Машина ҳақида маълумот:",
+        carImageLabel: "Машина расми ёки Тўлов чеки:",
+        carSubmitBtn: "🚀 Сайтга Эълон Қўшиш",
+        successAlert: "Эълонингиз муваффақиятли қўшилди!"
+    },
+    ru: {
+        searchPlaceholder: "Поиск машин или объявлений...",
+        searchBtn: "Поиск",
+        adBtn: "🚗 Подать объявление",
+        buyBtn: "Купить",
+        carModalTitle: "🚗 Подать объявление о машине",
+        carNameLabel: "Марка и модель машины:",
+        carYearLabel: "Год:",
+        carPriceLabel: "Цена:",
+        carDescLabel: "Информация о машине:",
+        carImageLabel: "Фото машины или чек оплаты:",
+        carSubmitBtn: "🚀 Добавить на сайт",
+        successAlert: "Ваше объявление успешно добавлено!"
+    },
+    en: {
+        searchPlaceholder: "Search cars or ads...",
+        searchBtn: "Search",
+        adBtn: "🚗 Post Car Ad",
+        buyBtn: "Buy",
+        carModalTitle: "🚗 Post Car Advertisement",
+        carNameLabel: "Car Model & Name:",
+        carYearLabel: "Year:",
+        carPriceLabel: "Price:",
+        carDescLabel: "Car Information:",
+        carImageLabel: "Car photo or payment receipt:",
+        carSubmitBtn: "🚀 Add to Website",
+        successAlert: "Your ad has been successfully added!"
+    },
+    tr: {
+        searchPlaceholder: "Araba veya ilan ara...",
+        searchBtn: "Ara",
+        adBtn: "🚗 Araç İlanı Ver",
+        buyBtn: "Satın Al",
+        carModalTitle: "🚗 Araç İlanı Ver",
+        carNameLabel: "Araç Adı ve Modeli:",
+        carYearLabel: "Yıl:",
+        carPriceLabel: "Fiyat:",
+        carDescLabel: "Araç Hakkında Bilgi:",
+        carImageLabel: "Araç Fotoğrafı veya Ödeme Dekontu:",
+        carSubmitBtn: "🚀 Siteye İlan Ekle",
+        successAlert: "İlanınız başarıyla eklendi!"
+    },
+    ar: {
+        searchPlaceholder: "البحث عن سيارات أو إعلانات...",
+        searchBtn: "بحث",
+        adBtn: "🚗 نشر إعلان سيارة",
+        buyBtn: "شراء",
+        carModalTitle: "🚗 نشر إعلان سيارة",
+        carNameLabel: "اسم السيارة وموديلها:",
+        carYearLabel: "السنة:",
+        carPriceLabel: "السعر:",
+        carDescLabel: "معلومات حول السيارة:",
+        carImageLabel: "صورة السيارة أو إيصال الدفع:",
+        carSubmitBtn: "🚀 إضافة إلى الموقع",
+        successAlert: "تم إضافة إعلانك بنجاح!"
+    }
+};
+
+// Tilni almashtirish funksiyasi
+function changeLanguage(lang) {
+    localStorage.setItem("selectedLang", lang);
+
+    // Arab tili uchun o'ngdan chapga (RTL), qolganlariga chapdan o'ngga (LTR)
+    if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+    }
+
+    const t = translations[lang];
+    if (!t) return;
+
+    // Qidiruv va asosiy tugmalarni o'zgartirish
+    const searchInput = document.getElementById("search-input");
+    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+
+    const searchBtn = document.getElementById("search-btn");
+    if (searchBtn) searchBtn.textContent = t.searchBtn;
+
+    const btnAd = document.querySelector(".btn-ad");
+    if (btnAd) btnAd.textContent = t.adBtn;
+
+    const buyButtons = document.querySelectorAll(".buy-btn");
+    buyButtons.forEach(btn => {
+        btn.textContent = t.buyBtn;
+    });
+}
+
+
+// ==========================================
+// 2. UMUMIY SAHIFA FUNKSIYALARI (Qidiruv va Havolalar)
 // ==========================================
 document.addEventListener("DOMContentLoaded", function () {
+    const savedLang = localStorage.getItem("selectedLang") || "uz_lat";
+    changeLanguage(savedLang);
+
     // Yopish tugmasi
     const closeButton = document.querySelector(".lada-top-right button");
     if (closeButton) {
@@ -25,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ==========================================
-// 2. QIDIRUV Tizimi (Search)
+// 3. QIDIRUV Tizimi (Search)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
@@ -70,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ==========================================
-// 3. MAHSULOT SOTIB OLISH VA TELEGRAM BOT (Buyurtma Modal)
+// 4. MAHSULOT SOTIB OLISH VA TELEGRAM BOT (Buyurtma Modal)
 // ==========================================
 const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
 const ADMIN_CHAT_ID = "8673898827"; 
@@ -208,13 +332,16 @@ function sendTelegramPhotoWithButton(file, captionText) {
 
 
 // ==========================================
-// 4. MASHINA E'LONINI QO'YISH TIZIMI (Modal va LocalStorage)
+// 5. MASHINA E'LONINI QO'YISH TIZIMI (Modal va LocalStorage)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const btnAd = document.querySelector(".btn-ad");
     if (btnAd) {
         btnAd.addEventListener("click", (e) => {
             e.preventDefault();
+            
+            const currentLang = localStorage.getItem("selectedLang") || "uz_lat";
+            const t = translations[currentLang];
             
             const modalHtml = `
                 <div id="car-ad-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); backdrop-filter: blur(5px); display:flex; align-items:center; justify-content:center; z-index:9999; overflow-y:auto; padding:20px;">
@@ -223,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span id="close-modal" style="position:absolute; right:22px; top:18px; cursor:pointer; font-size:26px; font-weight:bold; color:#aaa; transition:0.2s;">&times;</span>
                         
                         <div style="text-align:center; margin-bottom:20px;">
-                            <h2 style="color:#ff6b00; margin:0 0 5px 0; font-size:24px;">🚗 Mashina E'lonini Joylash</h2>
+                            <h2 style="color:#ff6b00; margin:0 0 5px 0; font-size:24px;">${t.carModalTitle}</h2>
                             <p style="font-size:13px; color:#555; background:#fff8f3; padding:10px; border-radius:8px; border:1px dashed #ffb380; margin:10px 0 0 0;">
                                 To'lov narxi: <b>5 000 so'm</b><br>Karta raqami: <span style="color:#d9534f; font-weight:bold; font-size:15px;">+998916957959</span>
                             </p>
@@ -231,17 +358,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <form id="car-form" style="display:flex; flex-direction:column; gap:14px; text-align:left;">
                             <div>
-                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina nomi va rusumi:</label>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carNameLabel}</label>
                                 <input type="text" id="car-title" placeholder="Masalan: Lada Vesta Cross" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
                             </div>
 
                             <div style="display:flex; gap:12px;">
                                 <div style="flex:1;">
-                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Yili:</label>
+                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carYearLabel}</label>
                                     <input type="text" id="car-year" placeholder="2022 yil" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
                                 </div>
                                 <div style="flex:1;">
-                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Narxi:</label>
+                                    <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carPriceLabel}</label>
                                     <input type="text" id="car-price" placeholder="12 000 $" required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
                                 </div>
                             </div>
@@ -252,17 +379,17 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
 
                             <div>
-                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina haqida ma'lumot:</label>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carDescLabel}</label>
                                 <textarea id="car-desc" rows="3" placeholder="Holati, kraskasi, yurgani..." required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; resize:vertical;"></textarea>
                             </div>
 
                             <div>
-                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">Mashina rasmi yoki To'lov cheki:</label>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carImageLabel}</label>
                                 <input type="file" id="car-image" accept="image/*" required style="width:100%; padding:8px; border:1px dashed #ccc; border-radius:8px; background:#fafafa; font-size:13px; cursor:pointer;">
                             </div>
 
                             <button type="submit" style="width:100%; background:linear-gradient(135deg, #ff6b00, #ff8c00); color:#fff; border:none; padding:13px; font-weight:bold; border-radius:8px; cursor:pointer; font-size:16px; margin-top:5px; box-shadow:0 4px 10px rgba(255,107,0,0.3);">
-                                🚀 Saytga E'lon Qo'shish
+                                ${t.carSubmitBtn}
                             </button>
                         </form>
                     </div>
@@ -308,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         window.open(telegramUrl, '_blank');
                         document.getElementById("car-ad-modal").remove();
-                        alert("E'loningiz muvaffaqiyatli saytga qo'shildi!");
+                        alert(t.successAlert);
                     };
                     reader.readAsDataURL(file);
                 }
@@ -354,80 +481,3 @@ function loadSavedAds() {
         appendCarCard(car);
     });
 }
-// Lug'at bazasi (Har bir til uchun matnlar)
-const translations = {
-    uz: {
-        searchPlaceholder: "Mashina yoki e'lonlarni qidirish...",
-        searchBtn: "Qidirish",
-        adBtn: "🚗 Mashina E'lonini Joylash",
-        buyBtn: "Sotib olish",
-        carTitlePlaceholder: "Masalan: Lada Vesta Cross",
-        successAlert: "E'loningiz muvaffaqiyatli qo'shildi!"
-    },
-    ru: {
-        searchPlaceholder: "Поиск машин или объявлений...",
-        searchBtn: "Поиск",
-        adBtn: "🚗 Подать объявление",
-        buyBtn: "Купить",
-        carTitlePlaceholder: "Например: Lada Vesta Cross",
-        successAlert: "Ваше объявление успешно добавлено!"
-    },
-    en: {
-        searchPlaceholder: "Search cars or ads...",
-        searchBtn: "Search",
-        adBtn: "🚗 Post Car Ad",
-        buyBtn: "Buy",
-        carTitlePlaceholder: "Example: Lada Vesta Cross",
-        successAlert: "Your ad has been successfully added!"
-    },
-    tr: {
-        searchPlaceholder: "Araba veya ilan ara...",
-        searchBtn: "Ara",
-        adBtn: "🚗 Araç İlanı Ver",
-        buyBtn: "Satın Al",
-        carTitlePlaceholder: "Örnek: Lada Vesta Cross",
-        successAlert: "İlanınız başarıyla eklendi!"
-    },
-    ar: {
-        searchPlaceholder: "البحث عن سيارات أو إعلانات...",
-        searchBtn: "بحث",
-        adBtn: "🚗 نشر إعلان سيارة",
-        buyBtn: "شراء",
-        carTitlePlaceholder: "مثال: لادا فيستا كروس",
-        successAlert: "تم إضافة إعلانك بنجاح!"
-    }
-};
-
-// Tilni o'zgartirish funksiyasi
-function changeLanguage(lang) {
-    // Tanlangan tilni xotirada saqlab qo'yamiz
-    localStorage.setItem("selectedLang", lang);
-
-    // Arab tili uchun sahifani o'ngdan chapga (RTL) o'zgartiramiz, qolganlariga chapdan o'ngga (LTR)
-    if (lang === 'ar') {
-        document.documentElement.setAttribute('dir', 'rtl');
-    } else {
-        document.documentElement.setAttribute('dir', 'ltr');
-    }
-
-    const t = translations[lang];
-    if (!t) return;
-
-    // Qidiruv input placeholderini o'zgartirish
-    const searchInput = document.getElementById("search-input");
-    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
-
-    // Qidiruv tugmasini o'zgartirish
-    const searchBtn = document.getElementById("search-btn");
-    if (searchBtn) searchBtn.textContent = t.searchBtn;
-
-    // E'lon berish tugmasini o'zgartirish
-    const btnAd = document.querySelector(".btn-ad");
-    if (btnAd) btnAd.textContent = t.adBtn;
-}
-
-// Sahifa yuklanganda oldin tanlangan tilni avtomatik yoqish
-document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("selectedLang") || "uz";
-    changeLanguage(savedLang);
-});
