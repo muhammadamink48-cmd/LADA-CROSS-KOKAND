@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LADA Mashina Bozori - E'lonlar</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #ff6b00;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .btn {
+            background: #ff6b00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #e05e00; }
+        .btn-danger {
+            background: #dc3545;
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+        .btn-danger:hover { background: #c82333; }
+        
+        /* Form section */
+        .post-form-card {
+            background: #fdfdfd;
+            border: 2px dashed #ff6b00;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .post-form-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        /* Listings grid */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .car-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .car-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .car-body {
+            padding: 15px;
+        }
+        .car-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 8px 0;
+        }
+        .car-price {
+            color: #ff6b00;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .car-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .car-footer {
+            padding: 10px 15px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .empty-state {
+            text-align: center;
+            color: #888;
+            padding: 40px;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="market.html" class="btn">⬅️ Orqaga (Market)</a>
+        <h1>🚗 LADA Mashina Bozori</h1>
+        <button class="btn" onclick="toggleForm()">➕ E'lon Qo'shish</button>
+    </div>
+    
+    <p class="subtitle">Bu yerda foydalanuvchilar tomonidan joylangan mashina e'lonlari ko'rsatiladi.</p>
+
+    <!-- Yangi e'lon qo'shish formasi -->
+    <div id="post-form-container" class="post-form-card" style="display: none;">
+        <h3>Yangi Mashina E'lonini Qo'shish (5 000 so'm to'lov qilinganidan so'ng)</h3>
+        <form id="carForm" onsubmit="addCar(event)">
+            <div class="form-group">
+                <label>Mashina nomi (Masalan: Lada Priora 2014):</label>
+                <input type="text" id="carTitle" required placeholder="Mashina nomi va yili">
+            </div>
+            <div class="form-group">
+                <label>Narxi ($ yoki so'm):</label>
+                <input type="text" id="carPrice" required placeholder="Masalan: $7,500 yoki 90 mln so'm">
+            </div>
+            <div class="form-group">
+                <label>Rasm havolasi (URL yoki lokal rasm nomi, masalan: priora.jpg):</label>
+                <input type="text" id="carImage" required placeholder="priora.jpg yoki rasm havolasi">
+            </div>
+            <div class="form-group">
+                <label>Qisqacha ma'lumot va telefon raqam:</label>
+                <textarea id="carDesc" rows="3" required placeholder="Holati yaxshi, kraskasi toza. Tel: +99890..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Maxfiy parol (E'lonni o'chirish uchun o'zingiz o'ylab toping):</label>
+                <input type="password" id="carPin" required placeholder="Masalan: 1234">
+            </div>
+            <button type="submit" class="btn">E'lonni joylash</button>
+        </form>
+    </div>
+
+    <!-- Mashinalar ro'yxati -->
+    <div id="carsGrid" class="cars-grid">
+        <!-- JavaScript orqali dinamik to'ldiriladi -->
+    </div>
+</div>
+
+<script>
+    // Siz uchun maxfiy admin paroli
+    const ADMIN_MASTER_PIN = "7266";
+
+    document.addEventListener("DOMContentLoaded", loadCars);
+
+    function toggleForm() {
+        const form = document.getElementById("post-form-container");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    function loadCars() {
+        const grid = document.getElementById("carsGrid");
+        let cars = JSON.parse(localStorage.getItem("lada_market_cars")) || [];
+
+        if (cars.length === 0) {
+            grid.innerHTML = `<div class="empty-state">Hozircha e'lonlar mavjud emas. Yuqoridagi "E'lon Qo'shish" tugmasi orqali birinchi e'lonni qo'shing!</div>`;
+            return;
+        }
+
+        grid.innerHTML = "";
+        cars.forEach((car, index) => {
+            grid.innerHTML += `
+                <div class="car-card">
+                    <div>
+                        <img src="${car.image}" alt="${car.title}" class="car-img" onerror="this.src='mogo.jpg'">
+                        <div class="car-body">
+                            <h3 class="car-title">${car.title}</h3>
+                            <div class="car-price">${car.price}</div>
+                            <div class="car-desc">${car.desc}</div>
+                        </div>
+                    </div>
+                    <div class="car-footer">
+                        <span style="font-size: 12px; color: #888;">ID: #${index + 1}</span>
+                        <button class="btn btn-danger" onclick="deleteCar(${index})">🗑 O'chirish</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function addCar(event) {
+        event.preventDefault();
+        const title = document.getElementById("carTitle").value;
+        const price = document.getElementById("carPrice").value;
+        const image = document.getElementById("carImage").value;
+        const desc = document.getElementById("carDesc").value;
+        const pin = document.getElementById("carPin").value;
+
+        let cars = JSON.parse(localStorage.getItem("lada_market_cars")) || [];
+        cars.push({ title, price, image, desc, pin });
+        localStorage.setItem("lada_market_cars", JSON.stringify(cars));
+
+        document.getElementById("carForm").reset();
+        document.getElementById("post-form-container").style.display = "none";
+        loadCars();
+        alert("E'lon muvaffaqiyatli qo'shildi!");
+    }
+
+    function deleteCar(index) {
+        let cars = JSON.parse(localStorage.getItem("lada_market_cars")) || [];
+        let car = cars[index];
+
+        let enteredPin = prompt("E'lonni o'chirish uchun PIN-kodni kiriting (Admin kodi: 7266):");
+        
+        if (enteredPin === null) return;
+
+        if (enteredPin === car.pin || enteredPin === ADMIN_MASTER_PIN) {
+            cars.splice(index, 1);
+            localStorage.setItem("lada_market_cars", JSON.stringify(cars));
+            loadCars();
+            alert("E'lon muvaffaqiyatli o'chirildi!");
+        } else {
+            alert("Xato! Kiritilgan parol noto'g'ri.");
+        }
+    }
+</script>
+
+</body>
+</html>
