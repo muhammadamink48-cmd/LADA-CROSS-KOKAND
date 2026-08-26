@@ -354,3 +354,80 @@ function loadSavedAds() {
         appendCarCard(car);
     });
 }
+// Lug'at bazasi (Har bir til uchun matnlar)
+const translations = {
+    uz: {
+        searchPlaceholder: "Mashina yoki e'lonlarni qidirish...",
+        searchBtn: "Qidirish",
+        adBtn: "🚗 Mashina E'lonini Joylash",
+        buyBtn: "Sotib olish",
+        carTitlePlaceholder: "Masalan: Lada Vesta Cross",
+        successAlert: "E'loningiz muvaffaqiyatli qo'shildi!"
+    },
+    ru: {
+        searchPlaceholder: "Поиск машин или объявлений...",
+        searchBtn: "Поиск",
+        adBtn: "🚗 Подать объявление",
+        buyBtn: "Купить",
+        carTitlePlaceholder: "Например: Lada Vesta Cross",
+        successAlert: "Ваше объявление успешно добавлено!"
+    },
+    en: {
+        searchPlaceholder: "Search cars or ads...",
+        searchBtn: "Search",
+        adBtn: "🚗 Post Car Ad",
+        buyBtn: "Buy",
+        carTitlePlaceholder: "Example: Lada Vesta Cross",
+        successAlert: "Your ad has been successfully added!"
+    },
+    tr: {
+        searchPlaceholder: "Araba veya ilan ara...",
+        searchBtn: "Ara",
+        adBtn: "🚗 Araç İlanı Ver",
+        buyBtn: "Satın Al",
+        carTitlePlaceholder: "Örnek: Lada Vesta Cross",
+        successAlert: "İlanınız başarıyla eklendi!"
+    },
+    ar: {
+        searchPlaceholder: "البحث عن سيارات أو إعلانات...",
+        searchBtn: "بحث",
+        adBtn: "🚗 نشر إعلان سيارة",
+        buyBtn: "شراء",
+        carTitlePlaceholder: "مثال: لادا فيستا كروس",
+        successAlert: "تم إضافة إعلانك بنجاح!"
+    }
+};
+
+// Tilni o'zgartirish funksiyasi
+function changeLanguage(lang) {
+    // Tanlangan tilni xotirada saqlab qo'yamiz
+    localStorage.setItem("selectedLang", lang);
+
+    // Arab tili uchun sahifani o'ngdan chapga (RTL) o'zgartiramiz, qolganlariga chapdan o'ngga (LTR)
+    if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+    }
+
+    const t = translations[lang];
+    if (!t) return;
+
+    // Qidiruv input placeholderini o'zgartirish
+    const searchInput = document.getElementById("search-input");
+    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+
+    // Qidiruv tugmasini o'zgartirish
+    const searchBtn = document.getElementById("search-btn");
+    if (searchBtn) searchBtn.textContent = t.searchBtn;
+
+    // E'lon berish tugmasini o'zgartirish
+    const btnAd = document.querySelector(".btn-ad");
+    if (btnAd) btnAd.textContent = t.adBtn;
+}
+
+// Sahifa yuklanganda oldin tanlangan tilni avtomatik yoqish
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("selectedLang") || "uz";
+    changeLanguage(savedLang);
+});
