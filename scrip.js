@@ -3,10 +3,41 @@
 // ==========================================
 const translations = {
     uz_lat: {
-        searchPlaceholder: "Mashina yoki e'lonlarni qidirish...",
-        searchBtn: "Qidirish",
-        adBtn: "🚗 Mashina E'lonini Joylash",
-        buyBtn: "Sotib olish",
+        title: "Lada Cross Zapchast & Mashina Bozori",
+        logo: "🚗 AvtoMarket",
+        lada_cross_title: "LADA Cross",
+        search_placeholder: "Ehtiyot qismlarni yoki mashinalarni qidirish...",
+        search_btn: "Qidirish",
+        loc_shop: "Manzilni ko'rish",
+        mgr_call: "Menejerga qo'ng'iroq",
+        tg_chan: "Telegram kanal",
+        mgr_tg: "Menejer Telegram",
+        closed_btn: "Yopish / Holati",
+        vesta_title: "Lada Vesta Cross",
+        vesta_desc: "Lada Vesta ehtiyot qismlari uchun tugmani bosing",
+        vesta_btn: "LADA Vesta zapchastlariga kirish",
+        xray_title: "Lada X-RAY Cross",
+        xray_desc: "Lada X-RAY ehtiyot qismlari uchun tugmani bosing",
+        xray_btn: "LADA X-RAY zapchastlariga kirish",
+        largus_title: "Lada Largus Cross",
+        largus_desc: "Lada Largus ehtiyot qismlari uchun tugmani bosing",
+        largus_btn: "LADA Largus zapchastlariga kirish",
+        priora_title: "Lada Priora Cross",
+        priora_desc: "Lada Priora ehtiyot qismlari uchun tugmani bosing",
+        priora_btn: "LADA Priora zapchastlariga kirish",
+        granta_title: "Lada Granta Cross",
+        granta_desc: "Lada Granta ehtiyot qismlari uchun tugmani bosing",
+        granta_btn: "LADA Granta zapchastlariga kirish",
+        l09_title: "Lada 2109",
+        l09_desc: "Lada 2109 ehtiyot qismlari uchun tugmani bosing",
+        l09_btn: "LADA 2109 zapchastlariga kirish",
+        market_main_title: "🚗 LADA Mashina Bozori",
+        market_main_desc: "O'z mashinangizni veb-sayt va Telegram botimizda reklama qiling!",
+        price_title: "E'lon joylashtirish narxi",
+        payment_text: "To'lovni ushbu raqamga amalga oshiring:",
+        btn_goto_market: "🚗 Mashina Bozoriga O'tish",
+        btn_admin_ad: "Mashina e'lonini joylash",
+        btn_view_cars: "Mavjud mashinalarni ko'rish",
         carModalTitle: "🚗 Mashina E'lonini Joylash",
         carNameLabel: "Mashina nomi va rusumi:",
         carYearLabel: "Yili:",
@@ -17,10 +48,41 @@ const translations = {
         successAlert: "E'loningiz muvaffaqiyatli qo'shildi!"
     },
     uz_kir: {
-        searchPlaceholder: "Машина ёки эълонларни қидириш...",
-        searchBtn: "Қидириш",
-        adBtn: "🚗 Машина Эълонини Жойлаш",
-        buyBtn: "Сотиб олиш",
+        title: "Лада Кросс Запчаст & Машина Бозори",
+        logo: "🚗 АвтоМаркет",
+        lada_cross_title: "ЛАДА Кросс",
+        search_placeholder: "Эҳтиёт қисмларни ёки машиналарни қидириш...",
+        search_btn: "Қидириш",
+        loc_shop: "Манзилни кўриш",
+        mgr_call: "Менежэрга қўнғироқ",
+        tg_chan: "Телеграм канал",
+        mgr_tg: "Менежер Телеграм",
+        closed_btn: "Ёпиқ",
+        vesta_title: "Лада Веста Кросс",
+        vesta_desc: "Лада Веста эҳтиёт қисмлари учун тугмани босинг",
+        vesta_btn: "ЛАДА Веста запчастларига кириш",
+        xray_title: "Лада X-RAY Кросс",
+        xray_desc: "Лада X-RAY эҳтиёт қисмлари учун тугмани босинг",
+        xray_btn: "ЛАДА X-RAY запчастларига кириш",
+        largus_title: "Лада Ларгус Кросс",
+        largus_desc: "Лада Ларгус эҳтиёт қисмлари учун тугмани босинг",
+        largus_btn: "ЛАДА Ларгус запчастларига кириш",
+        priora_title: "Лада Приора Кросс",
+        priora_desc: "Лада Приора эҳтиёт қисмлари учун тугмани босинг",
+        priora_btn: "ЛАДА Приора запчастларига кириш",
+        granta_title: "Лада Гранта Кросс",
+        granta_desc: "Лада Гранта эҳтиёт қисмлари учун тугмани босинг",
+        granta_btn: "ЛАДА Гранта запчастларига кириш",
+        l09_title: "Лада 2109",
+        l09_desc: "Лада 2109 эҳтиёт қисмлари учун тугмани босинг",
+        l09_btn: "ЛАДА 2109 запчастларига кириш",
+        market_main_title: "🚗 ЛАДА Машина Бозори",
+        market_main_desc: "Ўз машинангизни веб-сайт ва Телеграм ботимизда реклама қилинг!",
+        price_title: "Эълон жойлаштириш нархи",
+        payment_text: "Тўловни ушбу рақамга амалга оширинг:",
+        btn_goto_market: "🚗 Машина Бозорига Ўтиш",
+        btn_admin_ad: "Машина эълонини жойлаш",
+        btn_view_cars: "Мавжуд машиналарни кўриш",
         carModalTitle: "🚗 Машина Эълонини Жойлаш",
         carNameLabel: "Машина номи ва русуми:",
         carYearLabel: "Йили:",
@@ -31,10 +93,41 @@ const translations = {
         successAlert: "Эълонингиз муваффақиятли қўшилди!"
     },
     ru: {
-        searchPlaceholder: "Поиск машин или объявлений...",
-        searchBtn: "Поиск",
-        adBtn: "🚗 Подать объявление",
-        buyBtn: "Купить",
+        title: "Lada Cross Запчасти и Авторынок",
+        logo: "🚗 АвтоМаркет",
+        lada_cross_title: "LADA Cross",
+        search_placeholder: "Поиск запчастей или машин...",
+        search_btn: "Поиск",
+        loc_shop: "Адрес магазина",
+        mgr_call: "Звонок менеджеру",
+        tg_chan: "Телеграм канал",
+        mgr_tg: "Менеджер Телеграм",
+        closed_btn: "Закрыто",
+        vesta_title: "Lada Vesta Cross",
+        vesta_desc: "Нажмите кнопку для запчастей Lada Vesta",
+        vesta_btn: "Войти в запчасти LADA Vesta",
+        xray_title: "Lada X-RAY Cross",
+        xray_desc: "Нажмите кнопку для запчастей Lada X-RAY",
+        xray_btn: "Войти в запчасти LADA X-RAY",
+        largus_title: "Lada Largus Cross",
+        largus_desc: "Нажмите кнопку для запчастей Lada Largus",
+        largus_btn: "Войти в запчасти LADA Largus",
+        priora_title: "Lada Priora Cross",
+        priora_desc: "Нажмите кнопку для запчастей Lada Priora",
+        priora_btn: "Войти в запчасти LADA Priora",
+        granta_title: "Lada Granta Cross",
+        granta_desc: "Нажмите кнопку для запчастей Lada Granta",
+        granta_btn: "Войти в запчасти LADA Granta",
+        l09_title: "Lada 2109",
+        l09_desc: "Нажмите кнопку для запчастей Lada 2109",
+        l09_btn: "Войти в запчасти LADA 2109",
+        market_main_title: "🚗 Авторынок LADA",
+        market_main_desc: "Рекламируйте свой автомобиль на нашем сайте и в Telegram боте!",
+        price_title: "Стоимость размещения объявления",
+        payment_text: "Оплатите на этот номер:",
+        btn_goto_market: "🚗 Перейти на авторынок",
+        btn_admin_ad: "Разместить объявление",
+        btn_view_cars: "Посмотреть авто",
         carModalTitle: "🚗 Подать объявление о машине",
         carNameLabel: "Марка и модель машины:",
         carYearLabel: "Год:",
@@ -45,10 +138,41 @@ const translations = {
         successAlert: "Ваше объявление успешно добавлено!"
     },
     en: {
-        searchPlaceholder: "Search cars or ads...",
-        searchBtn: "Search",
-        adBtn: "🚗 Post Car Ad",
-        buyBtn: "Buy",
+        title: "Lada Cross Parts & Car Market",
+        logo: "🚗 AutoMarket",
+        lada_cross_title: "LADA Cross",
+        search_placeholder: "Search spare parts or cars...",
+        search_btn: "Search",
+        loc_shop: "Store location",
+        mgr_call: "Manager call",
+        tg_chan: "Telegram channel",
+        mgr_tg: "Manager Telegram",
+        closed_btn: "Closed",
+        vesta_title: "Lada Vesta Cross",
+        vesta_desc: "Click the button for Lada Vesta parts",
+        vesta_btn: "Enter LADA Vesta parts",
+        xray_title: "Lada X-RAY Cross",
+        xray_desc: "Click the button for Lada X-RAY parts",
+        xray_btn: "Enter LADA X-RAY parts",
+        largus_title: "Lada Largus Cross",
+        largus_desc: "Click the button for Lada Largus parts",
+        largus_btn: "Enter LADA Largus parts",
+        priora_title: "Lada Priora Cross",
+        priora_desc: "Click the button for Lada Priora parts",
+        priora_btn: "Enter LADA Priora parts",
+        granta_title: "Lada Granta Cross",
+        granta_desc: "Click the button for Lada Granta parts",
+        granta_btn: "Enter LADA Granta parts",
+        l09_title: "Lada 2109",
+        l09_desc: "Click the button for Lada 2109 parts",
+        l09_btn: "Enter LADA 2109 parts",
+        market_main_title: "🚗 LADA Car Market",
+        market_main_desc: "Advertise your car on our website and Telegram bot!",
+        price_title: "Ad posting price",
+        payment_text: "Make payment to this number:",
+        btn_goto_market: "🚗 Go to Car Market",
+        btn_admin_ad: "Post car ad",
+        btn_view_cars: "View available cars",
         carModalTitle: "🚗 Post Car Advertisement",
         carNameLabel: "Car Model & Name:",
         carYearLabel: "Year:",
@@ -59,10 +183,41 @@ const translations = {
         successAlert: "Your ad has been successfully added!"
     },
     tr: {
-        searchPlaceholder: "Araba veya ilan ara...",
-        searchBtn: "Ara",
-        adBtn: "🚗 Araç İlanı Ver",
-        buyBtn: "Satın Al",
+        title: "Lada Cross Yedek Parça & Araç Pazarı",
+        logo: "🚗 OtoMarket",
+        lada_cross_title: "LADA Cross",
+        search_placeholder: "Yedek parça veya araba ara...",
+        search_btn: "Ara",
+        loc_shop: "Mağaza konumu",
+        mgr_call: "Yöneticiyi ara",
+        tg_chan: "Telegram kanalı",
+        mgr_tg: "Yönetici Telegram",
+        closed_btn: "Kapalı",
+        vesta_title: "Lada Vesta Cross",
+        vesta_desc: "Lada Vesta parçaları için düğmeye tıklayın",
+        vesta_btn: "LADA Vesta parçalarına git",
+        xray_title: "Lada X-RAY Cross",
+        xray_desc: "Lada X-RAY parçaları için düğmeye tıklayın",
+        xray_btn: "LADA X-RAY parçalarına git",
+        largus_title: "Lada Largus Cross",
+        largus_desc: "Lada Largus parçaları için düğmeye tıklayın",
+        largus_btn: "LADA Largus parçalarına git",
+        priora_title: "Lada Priora Cross",
+        priora_desc: "Lada Priora parçaları için düğmeye tıklayın",
+        priora_btn: "LADA Priora parçalarına git",
+        granta_title: "Lada Granta Cross",
+        granta_desc: "Lada Granta parçaları için düğmeye tıklayın",
+        granta_btn: "LADA Granta parçalarına git",
+        l09_title: "Lada 2109",
+        l09_desc: "Lada 2109 parçaları için düğmeye tıklayın",
+        l09_btn: "LADA 2109 parçalarına git",
+        market_main_title: "🚗 LADA Araç Pazarı",
+        market_main_desc: "Aracınızı web sitemizde ve Telegram botumuzda tanıtın!",
+        price_title: "İlan verme ücreti",
+        payment_text: "Ödemeyi bu numaraya yapın:",
+        btn_goto_market: "🚗 Araç Pazarına Git",
+        btn_admin_ad: "Araç İlanı Ver",
+        btn_view_cars: "Mevcut araçları gör",
         carModalTitle: "🚗 Araç İlanı Ver",
         carNameLabel: "Araç Adı ve Modeli:",
         carYearLabel: "Yıl:",
@@ -73,10 +228,41 @@ const translations = {
         successAlert: "İlanınız başarıyla eklendi!"
     },
     ar: {
-        searchPlaceholder: "البحث عن سيارات أو إعلانات...",
-        searchBtn: "بحث",
-        adBtn: "🚗 نشر إعلان سيارة",
-        buyBtn: "شراء",
+        title: "قطع غيار لادا كروس وسوق السيارات",
+        logo: "🚗 سوق السيارات",
+        lada_cross_title: "لادا كروس",
+        search_placeholder: "بحث عن قطع الغيار أو السيارات...",
+        search_btn: "بحث",
+        loc_shop: "موقع المتجر",
+        mgr_call: "اتصال بالمدير",
+        tg_chan: "قناة تلغرام",
+        mgr_tg: "تلغرام المدير",
+        closed_btn: "مغلق",
+        vesta_title: "لادا فيستا كروس",
+        vesta_desc: "انقر فوق الزر لقطع غيار لادا فيستا",
+        vesta_btn: "دخول قطع غيار لادا فيستا",
+        xray_title: "لادا إكس راي كروس",
+        xray_desc: "انقر فوق الزر لقطع غيار لادا إكس راي",
+        xray_btn: "دخول قطع غيار لادا إكس راي",
+        largus_title: "لادا لارجوس كروس",
+        largus_desc: "انقر فوق الزر لقطع غيار لادا لارجوس",
+        largus_btn: "دخول قطع غيار لادا لارجوس",
+        priora_title: "لادا بريورا كروس",
+        priora_desc: "انقر فوق الزر لقطع غيار لادا بريورا",
+        priora_btn: "دخول قطع غيار لادا بريورا",
+        granta_title: "لada جرانتا كروس",
+        granta_desc: "انقر فوق الزر لقطع غيار لادا جرانتا",
+        granta_btn: "دخول قطع غيار لادا جرانتا",
+        l09_title: "لادا 2109",
+        l09_desc: "انقر فوق الزر لقطع غيار لادا 2109",
+        l09_btn: "دخول قطع غيار لادا 2109",
+        market_main_title: "🚗 سوق سيارات لادا",
+        market_main_desc: "أعلن عن سيارتك على موقعنا وفي بوت تلغرام!",
+        price_title: "سعر نشر الإعلان",
+        payment_text: "قم بالدفع على هذا الرقم:",
+        btn_goto_market: "🚗 الذهاب إلى سوق السيارات",
+        btn_admin_ad: "نشر إعلان سيارة",
+        btn_view_cars: "عرض السيارات المتاحة",
         carModalTitle: "🚗 نشر إعلان سيارة",
         carNameLabel: "اسم السيارة وموديلها:",
         carYearLabel: "السنة:",
@@ -88,11 +274,12 @@ const translations = {
     }
 };
 
-// Tilni almashtirish funksiyasi
+// ==========================================
+// 2. TILNI ALMASHTIRISH FUNKSIYASI
+// ==========================================
 function changeLanguage(lang) {
     localStorage.setItem("selectedLang", lang);
 
-    // Arab tili uchun o'ngdan chapga (RTL), qolganlariga chapdan o'ngga (LTR)
     if (lang === 'ar') {
         document.documentElement.setAttribute('dir', 'rtl');
     } else {
@@ -102,25 +289,30 @@ function changeLanguage(lang) {
     const t = translations[lang];
     if (!t) return;
 
-    // Qidiruv va asosiy tugmalarni o'zgartirish
-    const searchInput = document.getElementById("search-input");
-    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
-
-    const searchBtn = document.getElementById("search-btn");
-    if (searchBtn) searchBtn.textContent = t.searchBtn;
-
-    const btnAd = document.querySelector(".btn-ad");
-    if (btnAd) btnAd.textContent = t.adBtn;
-
-    const buyButtons = document.querySelectorAll(".buy-btn");
-    buyButtons.forEach(btn => {
-        btn.textContent = t.buyBtn;
+    // Barcha data-translate atributi bor elementlarni tarjima qilish
+    document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (t[key]) {
+            el.textContent = t[key];
+        }
     });
+
+    // Placeholder larni o'zgartirish
+    document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-translate-placeholder");
+        if (t[key]) {
+            el.setAttribute("placeholder", t[key]);
+        }
+    });
+
+    // Brauzer sarlavhasini o'zgartirish
+    if (t.title) {
+        document.title = t.title;
+    }
 }
 
-
 // ==========================================
-// 2. UMUMIY SAHIFA FUNKSIYALARI (Qidiruv va Havolalar)
+// 3. SAHIFA YUKLANGANDA ISHGA TUSHISHI
 // ==========================================
 document.addEventListener("DOMContentLoaded", function () {
     const savedLang = localStorage.getItem("selectedLang") || "uz_lat";
@@ -147,9 +339,8 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSavedAds();
 });
 
-
 // ==========================================
-// 3. QIDIRUV Tizimi (Search)
+// 4. QIDIRUV Tizimi (Search)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
@@ -191,145 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
-
-// ==========================================
-// 4. MAHSULOT SOTIB OLISH VA TELEGRAM BOT (Buyurtma Modal)
-// ==========================================
-const BOT_TOKEN = "8853754694:AAFA6rYGa4NHLDSXIwiDc4bP5LJQy6UVHnI"; 
-const ADMIN_CHAT_ID = "8673898827"; 
-
-let selectedProduct = "";
-let currentStockElement = null;
-let orderType = "pickup";
-
-document.addEventListener("DOMContentLoaded", function () {
-    const buyButtons = document.querySelectorAll(".buy-btn");
-    
-    buyButtons.forEach(btn => {
-        btn.onclick = function (e) {
-            e.preventDefault();
-            const card = this.closest('.card');
-            
-            currentStockElement = card.querySelector('.count');
-            let currentStock = currentStockElement ? parseInt(currentStockElement.textContent) : 0;
-
-            if (currentStock <= 0) {
-                alert("Kechirasiz, ushbu mahsulot tugagan!");
-                return;
-            }
-
-            const titleElement = card.querySelector('h3');
-            selectedProduct = titleElement ? titleElement.textContent : "Zapchast";
-
-            const modalTitle = document.getElementById('modalTitle');
-            if (modalTitle) modalTitle.textContent = selectedProduct + " - Buyurtma";
-            
-            const orderModal = document.getElementById('orderModal');
-            if (orderModal) orderModal.style.display = 'flex';
-        };
-    });
-});
-
-function closeOrderModal() {
-    const modal = document.getElementById('orderModal');
-    if (modal) modal.style.display = 'none';
-}
-
-function selectType(type) {
-    orderType = type;
-    const pickupBtn = document.getElementById('btnPickup');
-    const deliveryBtn = document.getElementById('btnDelivery');
-    const deliveryFields = document.querySelectorAll('.delivery-only');
-
-    if (!pickupBtn || !deliveryBtn) return;
-
-    if (type === 'pickup') {
-        pickupBtn.style.background = '#007bff';
-        pickupBtn.style.color = '#fff';
-        deliveryBtn.style.background = '#fff';
-        deliveryBtn.style.color = '#007bff';
-        deliveryFields.forEach(el => el.style.display = 'none');
-    } else {
-        deliveryBtn.style.background = '#007bff';
-        deliveryBtn.style.color = '#fff';
-        pickupBtn.style.background = '#fff';
-        pickupBtn.style.color = '#007bff';
-        deliveryFields.forEach(el => el.style.display = 'block');
-    }
-}
-
-async function handleOrderSubmit(e) {
-    e.preventDefault();
-
-    const nameInput = document.getElementById('custName');
-    const phoneInput = document.getElementById('custPhone');
-    
-    const name = nameInput ? nameInput.value : "";
-    const phone = phoneInput ? phoneInput.value : "";
-
-    if (currentStockElement) {
-        let currentStock = parseInt(currentStockElement.textContent);
-        if (currentStock > 0) {
-            currentStockElement.textContent = currentStock - 1;
-        }
-    }
-
-    if (orderType === 'pickup') {
-        const msg = `📦 NEW ORDER (O'ZIM OLIB KETAMAN)\nMahsulot: ${selectedProduct}\nIsm: ${name}\nTel: ${phone}`;
-        sendTelegramMessage(msg);
-
-        alert("Tasdiqlandi! Buyurtma 1 kun turadi va bekor bo'ladi.");
-        closeOrderModal();
-    } else {
-        const surname = document.getElementById('custSurname')?.value || "";
-        const email = document.getElementById('custEmail')?.value || "";
-        const card = document.getElementById('custCard')?.value || "";
-        const receiptFile = document.getElementById('custReceipt')?.files[0];
-
-        const msg = `🚚 NEW ORDER (YETKAZIB BERISH)\nMahsulot: ${selectedProduct}\nIsm-Familiya: ${name} ${surname}\nEmail: ${email}\nTel: ${phone}\nKarta: ${card}`;
-        
-        if (receiptFile) {
-            sendTelegramPhotoWithButton(receiptFile, msg);
-        } else {
-            sendTelegramMessage(msg);
-        }
-
-        alert("Buyurtmangiz qabul qilindi! Admin chekni va ma'lumotlarni tekshirib chiqadi.");
-        closeOrderModal();
-    }
-}
-
-function sendTelegramMessage(text) {
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: ADMIN_CHAT_ID,
-            text: text
-        })
-    }).catch(err => console.log("Xatolik:", err));
-}
-
-function sendTelegramPhotoWithButton(file, captionText) {
-    const formData = new FormData();
-    formData.append('chat_id', ADMIN_CHAT_ID);
-    formData.append('photo', file);
-    formData.append('caption', captionText);
-    
-    const keyboard = {
-        inline_keyboard: [[
-            { text: "✅ Tasdiqlash (Kod Yuborish)", callback_data: "send_code" }
-        ]]
-    };
-    formData.append('reply_markup', JSON.stringify(keyboard));
-
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-        method: 'POST',
-        body: formData
-    }).catch(err => console.log("Xatolik:", err));
-}
-
 
 // ==========================================
 // 5. MASHINA E'LONINI QO'YISH TIZIMI (Modal va LocalStorage)
@@ -481,261 +533,3 @@ function loadSavedAds() {
         appendCarCard(car);
     });
 }
-const translations = {
-    uz_lat: {
-        title: "Lada Cross Zapchast & Mashina Bozori",
-        logo: "🚗 AvtoMarket",
-        lada_cross_title: "LADA Cross",
-        search_placeholder: "Ehtiyot qismlarni qidirish...",
-        search_btn: "Qidirish",
-        loc_shop: "Manzilni ko'rish",
-        mgr_call: "Menejerga qo'ng'iroq",
-        tg_chan: "Telegram kanal",
-        mgr_tg: "Menejer Telegram",
-        closed_btn: "Yopish / Holati",
-        vesta_title: "Lada Vesta Cross",
-        vesta_desc: "Lada Vesta ehtiyot qismlari uchun tugmani bosing",
-        vesta_btn: "LADA Vesta zapchastlariga kirish",
-        xray_title: "Lada X-RAY Cross",
-        xray_desc: "Lada X-RAY ehtiyot qismlari uchun tugmani bosing",
-        xray_btn: "LADA X-RAY zapchastlariga kirish",
-        largus_title: "Lada Largus Cross",
-        largus_desc: "Lada Largus ehtiyot qismlari uchun tugmani bosing",
-        largus_btn: "LADA Largus zapchastlariga kirish",
-        priora_title: "Lada Priora Cross",
-        priora_desc: "Lada Priora ehtiyot qismlari uchun tugmani bosing",
-        priora_btn: "LADA Priora zapchastlariga kirish",
-        granta_title: "Lada Granta Cross",
-        granta_desc: "Lada Granta ehtiyot qismlari uchun tugmani bosing",
-        granta_btn: "LADA Granta zapchastlariga kirish",
-        l09_title: "Lada 2109",
-        l09_desc: "Lada 2109 ehtiyot qismlari uchun tugmani bosing",
-        l09_btn: "LADA 2109 zapchastlariga kirish",
-        market_main_title: "🚗 LADA Mashina Bozori",
-        market_main_desc: "O'z mashinangizni veb-sayt va Telegram botimizda reklama qiling!",
-        price_title: "E'lon joylashtirish narxi",
-        payment_text: "To'lovni ushbu raqamga amalga oshiring:",
-        btn_goto_market: "🚗 Mashina Bozoriga O'tish",
-        btn_admin_ad: "Mashina e'lonini joylash (Admin)",
-        btn_view_cars: "Mavjud mashinalarni ko'rish"
-    },
-    uz_kir: {
-        title: "Лада Кросс Запчаст & Машина Бозори",
-        logo: "🚗 АвтоМаркет",
-        lada_cross_title: "ЛАДА Кросс",
-        search_placeholder: "Эҳтиёт қисмларни қидириш...",
-        search_btn: "Қидириш",
-        loc_shop: "Манзилни кўриш",
-        mgr_call: "Менежэрга қўнғироқ",
-        tg_chan: "Телеграм канал",
-        mgr_tg: "Менежер Телеграм",
-        closed_btn: "Ёпиқ",
-        vesta_title: "Лада Веста Кросс",
-        vesta_desc: "Лада Веста эҳтиёт қисмлари учун тугмани босинг",
-        vesta_btn: "ЛАДА Веста запчастларига кириш",
-        xray_title: "Лада X-RAY Кросс",
-        xray_desc: "Лада X-RAY эҳтиёт қисмлари учун тугмани босинг",
-        xray_btn: "ЛАДА X-RAY запчастларига кириш",
-        largus_title: "Лада Ларгус Кросс",
-        largus_desc: "Лада Ларгус эҳтиёт қисмлари учун тугмани босинг",
-        largus_btn: "ЛАДА Ларгус запчастларига кириш",
-        priora_title: "Лада Приора Кросс",
-        priora_desc: "Лада Приора эҳтиёт қисмлари учун тугмани босинг",
-        priora_btn: "ЛАДА Приора запчастларига кириш",
-        granta_title: "Лада Гранта Кросс",
-        granta_desc: "Лада Гранта эҳтиёт қисмлари учун тугмани босинг",
-        granta_btn: "ЛАДА Гранта запчастларига кириш",
-        l09_title: "Лада 2109",
-        l09_desc: "Лада 2109 эҳтиёт қисмлари учун тугмани босинг",
-        l09_btn: "ЛАДА 2109 запчастларига кириш",
-        market_main_title: "🚗 ЛАДА Машина Бозори",
-        market_main_desc: "Ўз машинангизни веб-сайт ва Телеграм ботимизда реклама қилинг!",
-        price_title: "Эълон жойлаштириш нархи",
-        payment_text: "Тўловни ушбу рақамга амалга оширинг:",
-        btn_goto_market: "🚗 Машина Бозорига Ўтиш",
-        btn_admin_ad: "Машина эълонини жойлаш (Админ)",
-        btn_view_cars: "Мавжуд машиналарни кўриш"
-    },
-    ru: {
-        title: "Lada Cross Запчасти и Авторынок",
-        logo: "🚗 АвтоМаркет",
-        lada_cross_title: "LADA Cross",
-        search_placeholder: "Поиск запчастей...",
-        search_btn: "Поиск",
-        loc_shop: "Адрес магазина",
-        mgr_call: "Звонок менеджеру",
-        tg_chan: "Телеграм канал",
-        mgr_tg: "Менеджер Телеграм",
-        closed_btn: "Закрыто",
-        vesta_title: "Lada Vesta Cross",
-        vesta_desc: "Нажмите кнопку для запчастей Lada Vesta",
-        vesta_btn: "Войти в запчасти LADA Vesta",
-        xray_title: "Lada X-RAY Cross",
-        xray_desc: "Нажмите кнопку для запчастей Lada X-RAY",
-        xray_btn: "Войти в запчасти LADA X-RAY",
-        largus_title: "Lada Largus Cross",
-        largus_desc: "Нажмите кнопку для запчастей Lada Largus",
-        largus_btn: "Войти в запчасти LADA Largus",
-        priora_title: "Lada Priora Cross",
-        priora_desc: "Нажмите кнопку для запчастей Lada Priora",
-        priora_btn: "Войти в запчасти LADA Priora",
-        granta_title: "Lada Granta Cross",
-        granta_desc: "Нажмите кнопку для запчастей Lada Granta",
-        granta_btn: "Войти в запчасти LADA Granta",
-        l09_title: "Lada 2109",
-        l09_desc: "Нажмите кнопку для запчастей Lada 2109",
-        l09_btn: "Войти в запчасти LADA 2109",
-        market_main_title: "🚗 Авторынок LADA",
-        market_main_desc: "Рекламируйте свой автомобиль на нашем сайте и в Telegram боте!",
-        price_title: "Стоимость размещения объявления",
-        payment_text: "Оплатите на этот номер:",
-        btn_goto_market: "🚗 Перейти на авторынок",
-        btn_admin_ad: "Разместить объявление (Админ)",
-        btn_view_cars: "Посмотреть авто"
-    },
-    en: {
-        title: "Lada Cross Parts & Car Market",
-        logo: "🚗 AutoMarket",
-        lada_cross_title: "LADA Cross",
-        search_placeholder: "Search spare parts...",
-        search_btn: "Search",
-        loc_shop: "Store location",
-        mgr_call: "Manager call",
-        tg_chan: "Telegram channel",
-        mgr_tg: "Manager Telegram",
-        closed_btn: "Closed",
-        vesta_title: "Lada Vesta Cross",
-        vesta_desc: "Click the button for Lada Vesta parts",
-        vesta_btn: "Enter LADA Vesta parts",
-        xray_title: "Lada X-RAY Cross",
-        xray_desc: "Click the button for Lada X-RAY parts",
-        xray_btn: "Enter LADA X-RAY parts",
-        largus_title: "Lada Largus Cross",
-        largus_desc: "Click the button for Lada Largus parts",
-        largus_btn: "Enter LADA Largus parts",
-        priora_title: "Lada Priora Cross",
-        priora_desc: "Click the button for Lada Priora parts",
-        priora_btn: "Enter LADA Priora parts",
-        granta_title: "Lada Granta Cross",
-        granta_desc: "Click the button for Lada Granta parts",
-        granta_btn: "Enter LADA Granta parts",
-        l09_title: "Lada 2109",
-        l09_desc: "Click the button for Lada 2109 parts",
-        l09_btn: "Enter LADA 2109 parts",
-        market_main_title: "🚗 LADA Car Market",
-        market_main_desc: "Advertise your car on our website and Telegram bot!",
-        price_title: "Ad posting price",
-        payment_text: "Make payment to this number:",
-        btn_goto_market: "🚗 Go to Car Market",
-        btn_admin_ad: "Post car ad (Admin)",
-        btn_view_cars: "View available cars"
-    },
-    tr: {
-        title: "Lada Cross Yedek Parça & Araç Pazarı",
-        logo: "🚗 OtoMarket",
-        lada_cross_title: "LADA Cross",
-        search_placeholder: "Yedek parça ara...",
-        search_btn: "Ara",
-        loc_shop: "Mağaza konumu",
-        mgr_call: "Yöneticiyi ara",
-        tg_chan: "Telegram kanalı",
-        mgr_tg: "Yönetici Telegram",
-        closed_btn: "Kapalı",
-        vesta_title: "Lada Vesta Cross",
-        vesta_desc: "Lada Vesta parçaları için düğmeye tıklayın",
-        vesta_btn: "LADA Vesta parçalarına git",
-        xray_title: "Lada X-RAY Cross",
-        xray_desc: "Lada X-RAY parçaları için düğmeye tıklayın",
-        xray_btn: "LADA X-RAY parçalarına git",
-        largus_title: "Lada Largus Cross",
-        largus_desc: "Lada Largus parçaları için düğmeye tıklayın",
-        largus_btn: "LADA Largus parçalarına git",
-        priora_title: "Lada Priora Cross",
-        priora_desc: "Lada Priora parçaları için düğmeye tıklayın",
-        priora_btn: "LADA Priora parçalarına git",
-        granta_title: "Lada Granta Cross",
-        granta_desc: "Lada Granta parçaları için düğmeye tıklayın",
-        granta_btn: "LADA Granta parçalarına git",
-        l09_title: "Lada 2109",
-        l09_desc: "Lada 2109 parçaları için düğmeye tıklayın",
-        l09_btn: "LADA 2109 parçalarına git",
-        market_main_title: "🚗 LADA Araç Pazarı",
-        market_main_desc: "Aracınızı web sitemizde ve Telegram botumuzda tanıtın!",
-        price_title: "İlan verme ücreti",
-        payment_text: "Ödemeyi bu numaraya yapın:",
-        btn_goto_market: "🚗 Araç Pazarına Git",
-        btn_admin_ad: "Araç İlanı Ver (Yönetici)",
-        btn_view_cars: "Mevcut araçları gör"
-    },
-    ar: {
-        title: "قطع غيار لادا كروس وسوق السيارات",
-        logo: "🚗 سوق السيارات",
-        lada_cross_title: "لادا كروس",
-        search_placeholder: "بحث عن قطع الغيار...",
-        search_btn: "بحث",
-        loc_shop: "موقع المتجر",
-        mgr_call: "اتصال بالمدير",
-        tg_chan: "قناة تلغرام",
-        mgr_tg: "تلغرام المدير",
-        closed_btn: "مغلق",
-        vesta_title: "لادا فيستا كروس",
-        vesta_desc: "انقر فوق الزر لقطع غيار لادا فيستا",
-        vesta_btn: "دخول قطع غيار لادا فيستا",
-        xray_title: "لادا إكس راي كروس",
-        xray_desc: "انقر فوق الزر لقطع غيار لادا إكس راي",
-        xray_btn: "دخول قطع غيار لادا إكس راي",
-        largus_title: "لادا لارجوس كروس",
-        largus_desc: "انقر فوق الزر لقطع غيار لادا لارجوس",
-        largus_btn: "دخول قطع غيار لادا لارجوس",
-        priora_title: "لادا بريورا كروس",
-        priora_desc: "انقر فوق الزر لقطع غيار لادا بريورا",
-        priora_btn: "دخول قطع غيار لادا بريورا",
-        granta_title: "لادا جرانتا كروس",
-        granta_desc: "انقر فوق الزر لقطع غيار لادا جرانта",
-        granta_btn: "دخول قطع غيار لادا جرانتا",
-        l09_title: "لادا 2109",
-        l09_desc: "انقر فوق الزر لقطع غيار لادا 2109",
-        l09_btn: "دخول قطع غيار لادا 2109",
-        market_main_title: "🚗 سوق سيارات لادا",
-        market_main_desc: "أعلن عن سيارتك على موقعنا وفي بوت تلغرام!",
-        price_title: "سعر نشر الإعلان",
-        payment_text: "قم بالدفع على هذا الرقم:",
-        btn_goto_market: "🚗 الذهاب إلى سوق السيارات",
-        btn_admin_ad: "نشر إعلان سيارة (المشرف)",
-        btn_view_cars: "عرض السيارات المتاحة"
-    }
-};
-
-function changeLanguage(lang) {
-    if (!translations[lang]) return;
-
-    // Barcha oddiy matnlarni almashtirish
-    document.querySelectorAll("[data-translate]").forEach(el => {
-        const key = el.getAttribute("data-translate");
-        if (translations[lang][key]) {
-            el.innerText = translations[lang][key];
-        }
-    });
-
-    // Qidiruv maydonidagi placeholder'ni almashtirish
-    document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-translate-placeholder");
-        if (translations[lang][key]) {
-            el.setAttribute("placeholder", translations[lang][key]);
-        }
-    });
-
-    // Sahifa sarlavhasini (title) o'zgartirish
-    if (translations[lang]["title"]) {
-        document.title = translations[lang]["title"];
-    }
-
-    // Tanlangan tilni xotirada saqlab qo'yish
-    localStorage.setItem("selectedLang", lang);
-}
-
-// Sahifa yuklanganda avval tanlangan tilni chiqarish
-document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("selectedLang") || "uz_lat";
-    changeLanguage(savedLang);
-});
