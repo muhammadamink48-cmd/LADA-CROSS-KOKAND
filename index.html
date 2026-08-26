@@ -3,109 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lada Ehtiyot Qismlari Katalogi</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f7f6;
-            margin: 0;
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        h1 {
-            color: #ff6b00;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-        p {
-            color: #666;
-            margin-bottom: 35px;
-            font-size: 16px;
-        }
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .car-card {
-            background: #f9f9f9;
-            border: 2px solid #eee;
-            padding: 25px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .car-card:hover {
-            border-color: #ff6b00;
-            background: #fff5ee;
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.15);
-            color: #ff6b00;
-        }
-        .car-icon {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title data-translate="title">Lada Cross Zapchast & Mashina Bozori</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.jpg" type="image/x-icon">
+    <script src="scrip.js" defer></script>
 </head>
 <body>
+    <header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #f8f9fa; border-bottom: 1px solid #ddd;">
+        <div class="logo-area">
+            <h2 style="margin: 0; font-size: 20px; color: #ff6b00;" data-translate="logo">🚗 AvtoMarket</h2>
+        </div>
 
-<div class="container">
-    <h1>🚗 Lada Ehtiyot Qismlari Katalogi</h1>
-    <p>Kerakli avtomobil modelini tanlang va 300 ta ehtiyot qism narxlarini boshqaring:</p>
+        <!-- Tillar va Alifbo tanlash tugmalari -->
+        <div class="language-selector" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button onclick="changeLanguage('uz_lat')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 O'z</button>
+            <button onclick="changeLanguage('uz_kir')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 Ўз</button>
+            <button onclick="changeLanguage('ru')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇷🇺 Ру</button>
+            <button onclick="changeLanguage('en')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇬🇧 En</button>
+            <button onclick="changeLanguage('tr')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇹🇷 Tr</button>
+            <button onclick="changeLanguage('ar')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇸🇦 Ar</button>
+        </div>
+    </header>
 
-    <div class="car-grid">
-        <a href="chevrolet_niva.html" class="car-card">
-            <span class="car-icon">🚙</span>
-            Chevrolet Niva
-        </a>
-        <a href="niva_urban.html" class="car-card">
-            <span class="car-icon">🚙</span>
-            Niva Urban
-        </a>
-        <a href="kalina.html" class="car-card">
-            <span class="car-icon">🚗</span>
-            Lada Kalina
-        </a>
-        <a href="samara.html" class="car-card">
-            <span class="car-icon">🚗</span>
-            Lada Samara (2114/2115)
-        </a>
-        <a href="2107.html" class="car-card">
-            <span class="car-icon">🚘</span>
-            Lada 2107
-        </a>
-        <a href="2106.html" class="car-card">
-            <span class="car-icon">🚘</span>
-            Lada 2106
-        </a>
-        <a href="2104.html" class="car-card">
-            <span class="car-icon">🚐</span>
-            Lada 2104
-        </a>
-        <a href="2103.html" class="car-card">
-            <span class="car-icon">🚘</span>
-            Lada 2103
-        </a>
-        <a href="2101.html" class="car-card">
-            <span class="car-icon">🚘</span>
-            Lada 2101 (Kopeyka)
-        </a>
-    </div>
-</div>
+    <section class="Lada">
+        <div class="lada-top">
+            <div class="lada-top-left">
+                <img src="./mogo.jpg" alt="Lada Cross Logo">
+                <h2 data-translate="lada_cross_title">LADA Cross</h2>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" data-translate-placeholder="search_placeholder" placeholder="Ehtiyot qismlarni qidirish...">
+                <button id="search-btn" data-translate="search_btn">Qidirish</button>
+            </div>
 
+            <div class="lada-top-center">
+                <a href="https://www.google.com/maps?q=40.524373,70.944219" target="_blank" data-translate="loc_shop">location_shop</a>
+                <a href="tel:+998905077266" data-translate="mgr_call">manager call</a>
+                <a href="https://t.me/Lada_cross7" target="_blank" data-translate="tg_chan">telegram channel</a>
+                <a href="https://t.me/Lada_Cross_hujayn" target="_blank" data-translate="mgr_tg">manager telegram</a>
+            </div>
+            
+            <div class="lada-top-right">
+                <button id="close-btn" data-translate="closed_btn">closed</button>
+            </div>
+        </div>
+
+        <div class="lada-bottom-left">
+            <img src="./logo.jpg" alt="Vesta">
+            <h2 data-translate="vesta_title">Lada Vesta Cross</h2>
+            <p data-translate="vesta_desc">lada vesta zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="vesta.html" data-translate="vesta_btn">LADA Vesta zapchastlariga kirish</a>
+        </div>
+
+        <div class="lada-bottom-center">
+            <img src="./xray.jpg" alt="X-RAY">
+            <h2 data-translate="xray_title">Lada X-RAY Cross</h2>
+            <p data-translate="xray_desc">lada X-RAY zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="xray.html" data-translate="xray_btn">LADA X-RAY zapchastlariga kirish</a>
+        </div>
+
+        <div class="lada-bottom-right">
+            <img src="./largus.jpg" alt="Largus">
+            <h2 data-translate="largus_title">Lada Largus Cross</h2>
+            <p data-translate="largus_desc">lada Largus zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="largus.html" data-translate="largus_btn">LADA Largus zapchastlariga kirish</a>
+        </div>
+
+        <div class="lada-bottom-priora">
+            <img src="./priora.jpg" alt="Priora">
+            <h2 data-translate="priora_title">Lada Priora Cross</h2>
+            <p data-translate="priora_desc">lada Priora zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="priora.html" data-translate="priora_btn">LADA Priora zapchastlariga kirish</a>
+        </div>
+
+        <div class="lada-bottom-granta">
+            <img src="./granta.jpg" alt="Granta">
+            <h2 data-translate="granta_title">Lada Granta Cross</h2>
+            <p data-translate="granta_desc">lada Granta zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="granta.html" data-translate="granta_btn">LADA Granta zapchastlariga kirish</a>
+        </div>
+    </section>
+
+    <section class="l09">
+        <div class="l09-left">
+            <img src="./09.jpg" alt="2109">
+        </div>
+        <div class="l09-right">
+            <h2 data-translate="l09_title">Lada 2109</h2>
+            <p data-translate="l09_desc">lada 2109 zapchastlar uchun tugmani ustiga bosing</p>
+            <a href="2109.html" data-translate="l09_btn">LADA 2109 zapchastlariga kirish</a>
+        </div>
+    </section>
+
+    <!-- LADA Mashina Bozori -->
+    <section class="car-market">
+        <h2 data-translate="market_main_title">🚗 LADA Mashina Bozori</h2>
+        <p data-translate="market_main_desc">O'z mashinangizni veb-sayt va Telegram botimizda reklama qiling!</p>
+        
+        <div class="market-info">
+            <div class="price-card">
+                <h3 data-translate="price_title">E'lon joylashtirish narxi</h3>
+                <p class="price">5 000 so'm</p>
+                <p><span data-translate="payment_text">To'lovni ushbu raqamga amalga oshiring:</span> <strong>+998916957959</strong> (Click / Payme)</p>
+            </div>
+            
+            <div class="market-actions">
+                <a href="market.html" class="btn-market" style="background:#ff6b00; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block;" data-translate="btn_goto_market">
+                    🚗 Mashina Bozoriga O'tish
+                </a>
+                <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="btn-ad" data-translate="btn_admin_ad">Mashina e'lonini joylash (Admin)</a>
+                <a href="bozor.html" class="btn-bozor" data-translate="btn_view_cars">Mavjud mashinalarni ko'rish</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
