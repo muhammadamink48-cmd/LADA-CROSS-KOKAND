@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LADA Mashina Bozori - E'lonlar</title>
+    <title>LADA va turli xil mashinalar bozori - E'lonlar</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -24,6 +24,7 @@
             color: #ff6b00;
             text-align: center;
             margin-bottom: 5px;
+            font-size: 26px;
         }
         .subtitle {
             text-align: center;
@@ -157,7 +158,7 @@
 <div class="container">
     <div class="nav-bar">
         <a href="market.html" class="btn">⬅️ Orqaga (Market)</a>
-        <h1>🚗 LADA Mashina Bozori</h1>
+        <h1>🚗 LADA va turli xil mashinalar bozori</h1>
         <div style="display: flex; gap: 10px;">
             <button class="btn btn-admin" id="adminToggleBtn" onclick="toggleAdminMode()">🔐 Admin Rejimi</button>
             <button class="btn" onclick="toggleForm()">➕ E'lon Qo'shish</button>
@@ -171,7 +172,7 @@
         <h3>Yangi Mashina E'lonini Qo'shish (5 000 so'm to'lov qilinganidan so'ng)</h3>
         <form id="carForm" onsubmit="addCar(event)">
             <div class="form-group">
-                <label>Mashina nomi (Masalan: Lada Priora 2014):</label>
+                <label>Mashina nomi (Masalan: Lada Priora yoki Cobalt):</label>
                 <input type="text" id="carTitle" required placeholder="Mashina nomi va yili">
             </div>
             <div class="form-group">
@@ -179,8 +180,8 @@
                 <input type="text" id="carPrice" required placeholder="Masalan: $7,500 yoki 90 mln so'm">
             </div>
             <div class="form-group">
-                <label>Rasm havolasi (URL yoki lokal rasm nomi, masalan: priora.jpg):</label>
-                <input type="text" id="carImage" required placeholder="priora.jpg yoki rasm havolasi">
+                <label>Rasm havolasi (URL yoki lokal rasm nomi, masalan: mashina.jpg):</label>
+                <input type="text" id="carImage" required placeholder="mashina.jpg yoki rasm havolasi">
             </div>
             <div class="form-group">
                 <label>Qisqacha ma'lumot va telefon raqam:</label>
@@ -270,7 +271,6 @@
 
         grid.innerHTML = "";
         cars.forEach((car, index) => {
-            // O'chirish tugmasi faqat admin yoki o'sha e'lon egasiga ko'rinadi
             let showDelete = isAdmin || myPins.includes(car.pin);
 
             grid.innerHTML += `
