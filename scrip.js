@@ -31,7 +31,7 @@ const translations = {
         l09_title: "Lada 2109",
         l09_desc: "Lada 2109 ehtiyot qismlari uchun tugmani bosing",
         l09_btn: "LADA 2109 zapchastlariga kirish",
-        market_main_title: "🚗 LADA Mashina Bozori",
+        market_main_title: "🚗 LADA va turli xil mashinalar bozori",
         market_main_desc: "O'z mashinangizni veb-sayt va Telegram botimizda reklama qiling!",
         price_title: "E'lon joylashtirish narxi",
         payment_text: "To'lovni ushbu raqamga amalga oshiring:",
@@ -76,7 +76,7 @@ const translations = {
         l09_title: "Лада 2109",
         l09_desc: "Лада 2109 эҳтиёт қисмлари учун тугмани босинг",
         l09_btn: "ЛАДА 2109 запчастларига кириш",
-        market_main_title: "🚗 ЛАДА Машина Бозори",
+        market_main_title: "🚗 ЛАДА ва турли хил машиналар бозори",
         market_main_desc: "Ўз машинангизни веб-сайт ва Телеграм ботимизда реклама қилинг!",
         price_title: "Эълон жойлаштириш нархи",
         payment_text: "Тўловни ушбу рақамга амалга оширинг:",
@@ -121,7 +121,7 @@ const translations = {
         l09_title: "Lada 2109",
         l09_desc: "Нажмите кнопку для запчастей Lada 2109",
         l09_btn: "Войти в запчасти LADA 2109",
-        market_main_title: "🚗 Авторынок LADA",
+        market_main_title: "🚗 Авторынок LADA и различных автомобилей",
         market_main_desc: "Рекламируйте свой автомобиль на нашем сайте и в Telegram боте!",
         price_title: "Стоимость размещения объявления",
         payment_text: "Оплатите на этот номер:",
@@ -166,7 +166,7 @@ const translations = {
         l09_title: "Lada 2109",
         l09_desc: "Click the button for Lada 2109 parts",
         l09_btn: "Enter LADA 2109 parts",
-        market_main_title: "🚗 LADA Car Market",
+        market_main_title: "🚗 LADA and Various Car Market",
         market_main_desc: "Advertise your car on our website and Telegram bot!",
         price_title: "Ad posting price",
         payment_text: "Make payment to this number:",
@@ -211,7 +211,7 @@ const translations = {
         l09_title: "Lada 2109",
         l09_desc: "Lada 2109 parçaları için düğmeye tıklayın",
         l09_btn: "LADA 2109 parçalarına git",
-        market_main_title: "🚗 LADA Araç Pazarı",
+        market_main_title: "🚗 LADA ve Çeşitli Araç Pazarı",
         market_main_desc: "Aracınızı web sitemizde ve Telegram botumuzda tanıtın!",
         price_title: "İlan verme ücreti",
         payment_text: "Ödemeyi bu numaraya yapın:",
@@ -256,7 +256,7 @@ const translations = {
         l09_title: "لادا 2109",
         l09_desc: "انقر فوق الزر لقطع غيار لادا 2109",
         l09_btn: "دخول قطع غيار لادا 2109",
-        market_main_title: "🚗 سوق سيارات لادا",
+        market_main_title: "🚗 سوق سيارات لادا ومختلف السيارات",
         market_main_desc: "أعلن عن سيارتك على موقعنا وفي بوت تلغرام!",
         price_title: "سعر نشر الإعلان",
         payment_text: "قم بالدفع على هذا الرقم:",
@@ -289,7 +289,6 @@ function changeLanguage(lang) {
     const t = translations[lang];
     if (!t) return;
 
-    // Barcha data-translate atributi bor elementlarni tarjima qilish
     document.querySelectorAll("[data-translate]").forEach(el => {
         const key = el.getAttribute("data-translate");
         if (t[key]) {
@@ -297,7 +296,6 @@ function changeLanguage(lang) {
         }
     });
 
-    // Placeholder larni o'zgartirish
     document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
         const key = el.getAttribute("data-translate-placeholder");
         if (t[key]) {
@@ -305,7 +303,6 @@ function changeLanguage(lang) {
         }
     });
 
-    // Brauzer sarlavhasini o'zgartirish
     if (t.title) {
         document.title = t.title;
     }
@@ -318,7 +315,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedLang = localStorage.getItem("selectedLang") || "uz_lat";
     changeLanguage(savedLang);
 
-    // Yopish tugmasi
     const closeButton = document.querySelector(".lada-top-right button");
     if (closeButton) {
         closeButton.addEventListener("click", function () {
@@ -326,7 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Tashqi havolalarni yangi oynada ochish
     const externalLinks = document.querySelectorAll('.lada-top-center a');
     externalLinks.forEach(function (link) {
         const href = link.getAttribute('href');
@@ -335,7 +330,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Oldin saqlangan e'lonlarni chiqarish
     loadSavedAds();
 });
 
@@ -496,7 +490,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// E'lon kartasini HTML ga chiroyli qilib qo'shish
 function appendCarCard(car) {
     const marketSection = document.querySelector(".car-market");
     if (!marketSection) return;
@@ -519,14 +512,12 @@ function appendCarCard(car) {
     marketSection.insertAdjacentHTML("beforebegin", cardHtml);
 }
 
-// LocalStoragega saqlash
 function saveCarToStorage(car) {
     let cars = JSON.parse(localStorage.getItem("userCars")) || [];
     cars.push(car);
     localStorage.setItem("userCars", JSON.stringify(cars));
 }
 
-// Saqlanganlarni o'qish
 function loadSavedAds() {
     let cars = JSON.parse(localStorage.getItem("userCars")) || [];
     cars.forEach(car => {
