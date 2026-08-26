@@ -3,51 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mashina Bozori - AvtoMarket</title>
-    <link rel="stylesheet" href="style.css"> <!-- O'z CSS faylingiz nomi -->
+    <title>LADA Mashina Bozori - Markaziy Bozor</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        h1 {
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .market-card {
+            background: #fff8f3;
+            border: 2px solid #ff6b00;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .market-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b00;
+            margin: 10px 0;
+        }
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: #ff6b00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #e05e00; }
+        .btn-secondary {
+            background: #0088cc;
+        }
+        .btn-secondary:hover {
+            background: #0077b5;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #666;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { color: #ff6b00; }
+    </style>
 </head>
-<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; margin: 0; padding: 20px;">
+<body>
 
-    <!-- Yuqori menyu va Tillar -->
-    <header style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px;">
-        <div>
-            <a href="index.html" style="text-decoration: none; font-size: 20px; font-weight: bold; color: #333;">🏠 Bosh sahifa</a>
-        </div>
-        
-        <!-- Tillar va Alifbo tanlash -->
-        <div class="language-selector" style="display: flex; gap: 6px; align-items: center;">
-            <button onclick="changeLanguage('uz_lat')" class="lang-btn">🇺🇿 O'z</button>
-            <button onclick="changeLanguage('uz_kir')" class="lang-btn">🇺🇿 Ўз</button>
-            <button onclick="changeLanguage('ru')" class="lang-btn">🇷🇺 Рус</button>
-            <button onclick="changeLanguage('en')" class="lang-btn">🇬🇧 Eng</button>
-            <button onclick="changeLanguage('tr')" class="lang-btn">🇹🇷 Tür</button>
-            <button onclick="changeLanguage('ar')" class="lang-btn">🇸🇦 عرب</button>
-        </div>
-    </header>
+<div class="container">
+    <h1>🚗 LADA Mashina Bozori Markazi</h1>
+    <p>O'z mashinangizni tezkor va qulay tarzda ushbu veb-saytda hamda Telegram kanalimizda reklama qiling!</p>
+    
+    <div class="market-card">
+        <h3>E'lon joylashtirish shartlari:</h3>
+        <p>Mashinangiz savdosi uchun e'lon berish narxi atigi:</p>
+        <div class="price">5 000 so'm</div>
+        <p><strong>To'lovni amalga oshirish uchun raqam:</strong> <code>+998916957959</code> (Click / Payme)</p>
+        <p style="margin-bottom: 0; font-size: 14px; color: #777;">To'lovni amalga oshirgach, chekni va mashina ma'lumotlarini adminimizga yuboring.</p>
+    </div>
 
-    <!-- Asosiy bozor qismi -->
-    <main style="max-width: 900px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h1 style="color: #222; margin: 0;">🚗 Onlayn Mashina Bozori</h1>
-            <!-- E'lon qo'shish tugmasi -->
-            <button class="btn-ad" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white; border: none; padding: 12px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,107,0,0.3);">
-                + Mashina E'lonini Joylash
-            </button>
-        </div>
+    <div class="actions">
+        <a href="bozor.html" class="btn">🔍 Mavjud Mashinalarni Ko'rish</a>
+        <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="btn btn-secondary">💬 Admin bilan bog'lanish (E'lon berish)</a>
+    </div>
 
-        <!-- Qidiruv maydoni -->
-        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
-            <input type="text" id="search-input" placeholder="Mashina qidirish..." style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none;">
-            <button id="search-btn" style="background: #007bff; color: white; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">Qidirish</button>
-        </div>
+    <div>
+        <a href="index.html" class="back-link">⬅️ Bosh sahifaga qaytish</a>
+    </div>
+</div>
 
-        <!-- E'lonlar chiqadigan joy -->
-        <section class="car-market">
-            <!-- Saqlangan e'lonlar shu yerga avtomatik chiqadi -->
-        </section>
-    </main>
-
-    <!-- JavaScript skriptini ulash -->
-    <script src="script.js"></script>
 </body>
 </html>
