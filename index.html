@@ -11,20 +11,21 @@
 </head>
 <body>
     <header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #f8f9fa; border-bottom: 1px solid #ddd;">
-    <div class="logo-area">
-        <h2 style="margin: 0; font-size: 20px; color: #ff6b00;">🚗 AvtoMarket</h2>
-    </div>
+        <div class="logo-area">
+            <h2 style="margin: 0; font-size: 20px; color: #ff6b00;">🚗 AvtoMarket</h2>
+        </div>
 
-    <!-- Tillar va Alifbo tanlash tugmalari (Eng tepada turadi) -->
-    <div class="language-selector" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-        <button onclick="changeLanguage('uz_lat')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 O'z</button>
-        <button onclick="changeLanguage('uz_kir')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 Ўз</button>
-        <button onclick="changeLanguage('ru')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇷🇺 Ру</button>
-        <button onclick="changeLanguage('en')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇬🇧 En</button>
-        <button onclick="changeLanguage('tr')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇹🇷 Tr</button>
-        <button onclick="changeLanguage('ar')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇸🇦 Ar</button>
-    </div>
-</header>
+        <!-- Tillar va Alifbo tanlash tugmalari (Eng tepada turadi) -->
+        <div class="language-selector" style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button onclick="changeLanguage('uz_lat')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 O'z</button>
+            <button onclick="changeLanguage('uz_kir')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇺🇿 Ўз</button>
+            <button onclick="changeLanguage('ru')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇷🇺 Ру</button>
+            <button onclick="changeLanguage('en')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇬🇧 En</button>
+            <button onclick="changeLanguage('tr')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇹🇷 Tr</button>
+            <button onclick="changeLanguage('ar')" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 12px;">🇸🇦 Ar</button>
+        </div>
+    </header>
+
     <section class="Lada">
         <div class="lada-top">
             <div class="lada-top-left">
@@ -43,10 +44,8 @@
                 <a href="tel:+998905077266">manager call</a>
                 <a href="https://t.me/Lada_cross7" target="_blank">telegram channel</a>
                 <a href="https://t.me/Lada_Cross_hujayn" target="_blank">manager telegram</a>
-               
-
-</div>
             </div>
+            
             <div class="lada-top-right">
                 <button id="close-btn">closed</button>
             </div>
@@ -99,7 +98,7 @@
         </div>
     </section>
 
-    <!-- Yangi: LADA Mashina Bozori (E'lon joylash) -->
+    <!-- LADA Mashina Bozori (E'lon joylash) -->
     <section class="car-market">
         <h2>🚗 LADA Mashina Bozori</h2>
         <p>O'z mashinangizni veb-sayt va Telegram botimizda reklama qiling!</p>
@@ -112,6 +111,10 @@
             </div>
             
             <div class="market-actions">
+                <!-- Alohida market.html sahifasiga o'tish tugmasi -->
+                <a href="market.html" class="btn-market" style="background:#ff6b00; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block;">
+                    🚗 Mashina Bozoriga O'tish
+                </a>
                 <a href="https://t.me/Lada_Cross_hujayn" target="_blank" class="btn-ad">Mashina e'lonini joylash (Admin)</a>
                 <a href="bozor.html" class="btn-bozor">Mavjud mashinalarni ko'rish</a>
             </div>
