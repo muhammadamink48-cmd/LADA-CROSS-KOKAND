@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashina Bozori - AvtoMarket</title>
+    <link rel="stylesheet" href="style.css"> <!-- O'z CSS faylingiz nomi -->
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; margin: 0; padding: 20px;">
+
+    <!-- Yuqori menyu va Tillar -->
+    <header style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px;">
+        <div>
+            <a href="index.html" style="text-decoration: none; font-size: 20px; font-weight: bold; color: #333;">🏠 Bosh sahifa</a>
+        </div>
+        
+        <!-- Tillar va Alifbo tanlash -->
+        <div class="language-selector" style="display: flex; gap: 6px; align-items: center;">
+            <button onclick="changeLanguage('uz_lat')" class="lang-btn">🇺🇿 O'z</button>
+            <button onclick="changeLanguage('uz_kir')" class="lang-btn">🇺🇿 Ўз</button>
+            <button onclick="changeLanguage('ru')" class="lang-btn">🇷🇺 Рус</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">🇬🇧 Eng</button>
+            <button onclick="changeLanguage('tr')" class="lang-btn">🇹🇷 Tür</button>
+            <button onclick="changeLanguage('ar')" class="lang-btn">🇸🇦 عرب</button>
+        </div>
+    </header>
+
+    <!-- Asosiy bozor qismi -->
+    <main style="max-width: 900px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1 style="color: #222; margin: 0;">🚗 Onlayn Mashina Bozori</h1>
+            <!-- E'lon qo'shish tugmasi -->
+            <button class="btn-ad" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white; border: none; padding: 12px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(255,107,0,0.3);">
+                + Mashina E'lonini Joylash
+            </button>
+        </div>
+
+        <!-- Qidiruv maydoni -->
+        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+            <input type="text" id="search-input" placeholder="Mashina qidirish..." style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none;">
+            <button id="search-btn" style="background: #007bff; color: white; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">Qidirish</button>
+        </div>
+
+        <!-- E'lonlar chiqadigan joy -->
+        <section class="car-market">
+            <!-- Saqlangan e'lonlar shu yerga avtomatik chiqadi -->
+        </section>
+    </main>
+
+    <!-- JavaScript skriptini ulash -->
+    <script src="script.js"></script>
+</body>
+</html>
