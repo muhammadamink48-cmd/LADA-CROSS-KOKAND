@@ -37,6 +37,8 @@
             margin-bottom: 25px;
             border-bottom: 1px solid #eee;
             padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .btn {
             background: #ff6b00;
@@ -56,6 +58,12 @@
             font-size: 13px;
         }
         .btn-danger:hover { background: #c82333; }
+        .btn-admin {
+            background: #333;
+            font-size: 13px;
+            padding: 8px 14px;
+        }
+        .btn-admin:hover { background: #444; }
         
         /* Form section */
         .post-form-card {
@@ -150,7 +158,10 @@
     <div class="nav-bar">
         <a href="market.html" class="btn">⬅️ Orqaga (Market)</a>
         <h1>🚗 LADA Mashina Bozori</h1>
-        <button class="btn" onclick="toggleForm()">➕ E'lon Qo'shish</button>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-admin" id="adminToggleBtn" onclick="toggleAdminMode()">🔐 Admin Rejimi</button>
+            <button class="btn" onclick="toggleForm()">➕ E'lon Qo'shish</button>
+        </div>
     </div>
     
     <p class="subtitle">Bu yerda foydalanuvchilar tomonidan joylangan mashina e'lonlari ko'rsatiladi.</p>
@@ -190,19 +201,67 @@
 </div>
 
 <script>
-    // Siz uchun maxfiy admin paroli
     const ADMIN_MASTER_PIN = "7266";
 
-    document.addEventListener("DOMContentLoaded", loadCars);
+    document.addEventListener("DOMContentLoaded", () => {
+        checkAdminSession();
+        loadCars();
+    });
 
     function toggleForm() {
         const form = document.getElementById("post-form-container");
         form.style.display = form.style.display === "none" ? "block" : "none";
     }
 
+    function checkAdminSession() {
+        const isAdmin = sessionStorage.getItem("lada_admin_logged") === "true";
+        const btn = document.getElementById("adminToggleBtn");
+        if (isAdmin) {
+            btn.textContent = "🔓 Admin (Chiqish)";
+            btn.style.background = "#dc3545";
+        } else {
+            btn.textContent = "🔐 Admin Rejimi";
+            btn.style.background = "#333";
+        }
+    }
+
+    function toggleAdminMode() {
+        const isAdmin = sessionStorage.getItem("lada_admin_logged") === "true";
+        if (isAdmin) {
+            sessionStorage.removeItem("lada_admin_logged");
+            alert("Admin rejimidan chiqdingiz.");
+            checkAdminSession();
+            loadCars();
+        } else {
+            let pin = prompt("Admin parolini kiriting:");
+            if (pin === ADMIN_MASTER_PIN) {
+                sessionStorage.setItem("lada_admin_logged", "true");
+                alert("Admin rejimi yoqildi! Endi istalgan e'lonni o'chirishingiz mumkin.");
+                checkAdminSession();
+                loadCars();
+            } else if (pin !== null) {
+                alert("Noto'g'ri parol!");
+            }
+        }
+    }
+
+    function getMyCarPins() {
+        return JSON.parse(localStorage.getItem("lada_my_pins")) || [];
+    }
+
+    function saveMyCarPin(pin) {
+        let pins = getMyCarPins();
+        if (!pins.includes(pin)) {
+            pins.push(pin);
+            localStorage.setItem("lada_my_pins", JSON.stringify(pins));
+        }
+    }
+
     function loadCars() {
         const grid = document.getElementById("carsGrid");
         let cars = JSON.parse(localStorage.getItem("lada_market_cars")) || [];
+        let myPins = getMyCarPins();
+        let isAdmin = sessionStorage.getItem("lada_admin_logged") === "true";
 
         if (cars.length === 0) {
             grid.innerHTML = `<div class="empty-state">Hozircha e'lonlar mavjud emas. Yuqoridagi "E'lon Qo'shish" tugmasi orqali birinchi e'lonni qo'shing!</div>`;
@@ -211,6 +270,9 @@
 
         grid.innerHTML = "";
         cars.forEach((car, index) => {
+            // O'chirish tugmasi faqat admin yoki o'sha e'lon egasiga ko'rinadi
+            let showDelete = isAdmin || myPins.includes(car.pin);
+
             grid.innerHTML += `
                 <div class="car-card">
                     <div>
@@ -223,7 +285,7 @@
                     </div>
                     <div class="car-footer">
                         <span style="font-size: 12px; color: #888;">ID: #${index + 1}</span>
-                        <button class="btn btn-danger" onclick="deleteCar(${index})">🗑 O'chirish</button>
+                        ${showDelete ? `<button class="btn btn-danger" onclick="deleteCar(${index})">🗑 O'chirish</button>` : `<span style="font-size: 12px; color: #aaa;">Himoyalangan</span>`}
                     </div>
                 </div>
             `;
@@ -242,6 +304,8 @@
         cars.push({ title, price, image, desc, pin });
         localStorage.setItem("lada_market_cars", JSON.stringify(cars));
 
+        saveMyCarPin(pin);
+
         document.getElementById("carForm").reset();
         document.getElementById("post-form-container").style.display = "none";
         loadCars();
@@ -251,18 +315,26 @@
     function deleteCar(index) {
         let cars = JSON.parse(localStorage.getItem("lada_market_cars")) || [];
         let car = cars[index];
+        let isAdmin = sessionStorage.getItem("lada_admin_logged") === "true";
 
-        let enteredPin = prompt("E'lonni o'chirish uchun PIN-kodni kiriting (Admin kodi: 7266):");
-        
-        if (enteredPin === null) return;
+        let confirmed = confirm("Haqiqatan ham bu e'lonni o'chirib tashlamoqchimisiz?");
+        if (!confirmed) return;
 
-        if (enteredPin === car.pin || enteredPin === ADMIN_MASTER_PIN) {
+        if (isAdmin) {
             cars.splice(index, 1);
             localStorage.setItem("lada_market_cars", JSON.stringify(cars));
             loadCars();
-            alert("E'lon muvaffaqiyatli o'chirildi!");
+            alert("Admin huquqi bilan e'lon o'chirildi!");
         } else {
-            alert("Xato! Kiritilgan parol noto'g'ri.");
+            let enteredPin = prompt("E'lonni o'chirish uchun o'zingiz qo'ygan PIN-kodni kiriting:");
+            if (enteredPin === car.pin) {
+                cars.splice(index, 1);
+                localStorage.setItem("lada_market_cars", JSON.stringify(cars));
+                loadCars();
+                alert("E'loningiz muvaffaqiyatli o'chirildi!");
+            } else if (enteredPin !== null) {
+                alert("Noto'g'ri PIN-kod!");
+            }
         }
     }
 </script>
