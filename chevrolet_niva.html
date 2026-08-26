@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevrolet Niva Ehtiyot Qismlari</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #ff6b00; text-align: center; margin-bottom: 25px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background: #333; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .parts-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .parts-table th, .parts-table td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
+        .parts-table th { background: #ff6b00; color: white; }
+        .parts-table tr:nth-child(even) { background: #f9f9f9; }
+        .price-input { width: 120px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center; font-weight: bold; color: #28a745; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-btn">⬅️ Bosh sahifaga qaytish</a>
+    <h1>🚗 Chevrolet Niva Ehtiyot Qismlari Katalogi (300 ta)</h1>
+    <table class="parts-table">
+        <thead>
+            <tr>
+                <th style="width: 50px;">№</th>
+                <th>Ehtiyot qism nomi (Chevrolet Niva)</th>
+                <th style="width: 160px;">Narxi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                const parts = [
+                    "Old bufer Chevrolet Niva", "Orqa bufer", "Old kapot", "Orqa bagaj eshigi", "Krilo o'ng", "Krilo chap", 
+                    "Old eshik o'ng", "Old eshik chap", "Orqa eshik o'ng", "Orqa eshik chap", "Tom qismi (Krisha)", "Lobavoy oyna", 
+                    "Orqa oyna", "Fara old o'ng (Bosch/Valeo)", "Fara old chap", "Fara orqa o'ng", "Fara orqa chap", "Tumanga qarshi chiroq", 
+                    "Povorotnik", "Salon plafoni", "Podkrilnik to'plami", "Radiator panjarasi (Oblisovka)", "Karter himoyasi (Zashita)", 
+                    "Kapot zamoki", "Bagaj zamoki", "Eshik ruchkasi", "Dvigatel (1.8 / 1.7)", "Blok silindr", "Golosovka (GBK)", 
+                    "Kolenval", "Porshenlar komplekti", "Shatun", "Porshen halqalari (Kolsso)", "Klapanlar to'plami", "Raspredval", 
+                    "Gidrokompensator", "Mator remeni / Grm komplekti", "Natyajitel", "Mator podushkasi", "Maslonasos", "Karter", 
+                    "Svecha", "Katushka", "Broneprovod", "Generator", "Starter", "Konditsioner kompressori", "Suv radiatori", 
+                    "Pech radiatori", "Antifriz idishi", "Termostat", "Pompa (Suv nasosi)", "Ventilyator diffuzeri bilan", 
+                    "Injektor bloki", "Forsunka", "Benzonasos", "Kolenval datchigi", "Temperatura datchigi", "Rakatka (Korobka)", 
+                    "Sitsleplenie disk", "Korzina", "Vigimnoy podshibnik", "Maxavik", "Kardan vali old", "Kardan vali orqa", 
+                    "Razdatka (Tarqatish qutisi)", "Razdatka o'tkazgich tayog'i", "Reduktor old", "Reduktor orqa", "Glushitel (Asl)", 
+                    "Rezonator", "Katalizator", "Amortizator old o'ng", "Amortizator old chap", "Amortizator orqa o'ng", "Amortizator orqa chap", 
+                    "Prujina old", "Prujina orqa", "Rulavoy kolonka", "Rulavoy reyka / Trapesiya", "Gidroyuritma (GUR nasosi)", 
+                    "Sharavoy opora", "Rulavoy nakonechnik", "Granata tashqi (Shrus)", "Granata ichki", "Studitsa", "Stupitsa podshibnik", 
+                    "Tormoz disk", "Tormoz baraban", "Kolodka old", "Kolodka orqa", "Glavnoy tormoz tsilindri", "Ruchnoy tros", 
+                    "Vakuum kuchaytirgich", "Akkumulyator (60Ah)", "Blok predoxranitel", "Pereklyuchatel svet", "Zajiganiya zamok", 
+                    "Signal (Bibil)", "Televizor (Kuzov qismi)", "Pol kovriklari", "Sideniyalar", "Spidometr / Panel pribor", 
+                    "Magnitofon", "Dinamiklar", "Elektr oyna ko'targich (Steklopodyomnik)", "Pech motori", "Salon filtri", 
+                    "Havo filtri", "Yog' filtri", "Benzin filtri", "Salonslon chexoli", "Eshik obshivkasi", "Dikis disklar (R16)", 
+                    "Balon (Shina)", "Domkrat", "Kalitlar to'plami", "O't o'chirgich (Ognetushitel)", "Aptechka", "Birovni tortish trosi", 
+                    "Antiradar", "Videoregistrator", "Signalizatsiya", "Bort kompyuter", "Led lampalar", "Xrom paket", "Brazgovik", 
+                    "Deflektor (Vetrovik)", "Eshik rezinalari", "Benzin baki", "Dvornik", "Suv idishi bachoki", "Antifriz (10L)", 
+                    "Motor moyi (Mobil/Castrol)", "Korobka moyi", "Tormoz suyuqligi (DOT-4)", "WD-40", "Silikon spray", "Avtoshampun", 
+                    "Gubka", "Mikrofibra salfetka", "Krilolar komplekti", "Petlyalar", "Salyas (Podveska)", "Bolt va gaykalar", 
+                    "G'ildirak kalpag'i", "Klipslar to'plami", "Xomutlar", "Generator remeni", "Trubkalar", "Eshik chegarachisi", 
+                    "Pult", "Displey", "Tugmalar (Knopka)", "Forsunka rezinasi", "Modul", "Bar (Podlokotnik)", "Sigaret yoqgich", 
+                    "Soat", "Orqa ko'zgu", "Rele", "Kabel to'plami", "Oyna (Steklo)", "Baxrom", "Tent", "Bagaj setkasi", "Shpatlyovka", 
+                    "Kraska (Kuzov uchun)", "Polirovka pasta", "Nakleykalar", "Logotip (Chevrolet)", "Shildik", "Konditsioner radiatori", 
+                    "Zajiganiya moduli", "Svecha kaliti", "Probka poddona", "Yamoq komplekti", "Moy nasosi", "Klapanniy salnik", 
+                    "Kolenval salnik", "Raspredval salnik", "Poddon", "Prokladka to'plami", "Porshen halqasi", "Shatun vkladish", 
+                    "Kolenval vkladish", "Moy o'lchagich shup", "Gidromator", "Eshik oynasi", "Parda", "Qo'l dayagich", "Oyna yuvish motori", 
+                    "Kapot tros", "Zamok eshik", "Signalizatsiya bloki", "Zarba datchigi", "Germetik", "Termostat korpusi", 
+                    "Fara oynasi", "Povorotnik datchigi", "Stupitsa gaykasi", "Stoyka oporasi", "Stabilizator", "Vtulka stabilizator", 
+                    "USB zaryadnik", "FM modulator", "Sideniya dastagi", "Stop signal", "Nomer chirog'i", "Salondagi chiroq", 
+                    "Avto gilamcha", "Rul o'rami (Opitka)", "Kapot amortizatori", "Bagaj amortizatori", "Eshik cheklagichi", 
+                    "Kuzov qismi", "Bort tarmoq simlari", "Generator shkifi", "Konditsioner trubkasi", "Katalizator trubasi", 
+                    "Kuzov simi", "Blok faralar", "Toplivniy trubka", "Forsunka ramkasi", "Injektor bloki", "Mator datchiklari", 
+                    "Porshen barmog'i", "Antifriz qopqog'i", "Tormoz qopqog'i", "Gidravlika trubasi", "Tormoz shlangi", 
+                    "Rul tyagasi", "Amortizator yostig'i", "Prujina tagligi", "Balon nasosi", "Avariya belgisi", "Xrom paket", 
+                    "Loy himoya", "Kapot deflektori", "Oyna deflektori", "Mator qopqog'i", "Klimat kontrol", "Bak qopqog'i", 
+                    "Dvornik motori", "Kapot prujina", "Salnik", "Mator yuvish vositasi", "Antikor", "Bamper setkasi", "Burchak", 
+                    "Mator bloki", "Svecha provodi", "Faralar bloki", "Kronshteyn", "Stoyka qoplamasi", "Quyosh ko'zgusi", 
+                    "Bagaj petlya", "Kapot petlya", "Sideniya relsi", "Chexol skorost", "Rul lenta (Shlif-kolso)", "Filtri korpusi", 
+                    "Poddon bolt", "Koleso bolt", "Podkrilnik klipsi", "Konditsioner remeni", "Qulflash mexanizmi", "Isitgich bloki", 
+                    "Kruiz knopka", "Toplivniy ramka", "Injektor datchik", "Reyka pildiragich", "Prujina rezinasi", "Zaryadnik", 
+                    "Sideniya richag", "Oyna richagi", "Lampa", "Zarba datchik", "DOT-4 suyuqlik", "Tozalovchi", "Oyna suyuqligi", 
+                    "Salfetka to'plami", "Chexol komplekti", "Rul o'rami", "Razdatka salnik", "Most salnik", "Kardan muftasi (Elastichniy)", 
+                    "Kardan crosstok (Krestovina)", "Krilolar himoyasi", "Podtekat qilmaydigan xomut", "Sideniya chexoli", 
+                    "Motor podushkasi gidravlik", "Radiator difuzeri", "Pečka kranchasi", "Termostat krichkasi", "Zajiganiya simlar", 
+                    "Starter bendiksi", "Generator diod ko'prigi", "Injektor rezinasi", "Kapot zamok tros", "Bagajnika knopka", 
+                    "Esik ruchnoy", "Petlya bar", "Oyna rezina", "Krisha obshivkasi", "Parda o'rnatgich", "Oyoq osti rezina", 
+                    "Kuzov klipsasi", "Bojok qopqoq", "Fara krepleniya", "Sideniya chexol", "Rul nakladka", "Panel krilet", 
+                    "Podkrilnik samorez", "Signalizatsiya pult", "Bagaj zamok motori", "Eshik abshivka klips", "Kuzovgermetiki"
+                ];
+
+                for (let i = 0; i < parts.length; i++) {
+                    document.write(`<tr>
+                        <td>${i + 1}</td>
+                        <td><b>${parts[i]}</b></td>
+                        <td><input type="text" class="price-input" placeholder="Narx"></td>
+                    </tr>`);
+                }
+            </script>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

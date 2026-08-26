@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevrolet Niva & Urban Ehtiyot Qismlari</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #ff6b00; text-align: center; margin-bottom: 25px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background: #333; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .parts-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .parts-table th, .parts-table td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
+        .parts-table th { background: #ff6b00; color: white; }
+        .parts-table tr:nth-child(even) { background: #f9f9f9; }
+        .price-input { width: 120px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center; font-weight: bold; color: #28a745; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-btn">⬅️ Bosh sahifaga qaytish</a>
+    <h1>🚗 Chevrolet Niva & Niva Urban Ehtiyot Qismlari Katalogi (300 ta)</h1>
+    <table class="parts-table">
+        <thead><tr><th style="width: 50px;">№</th><th>Ehtiyot qism nomi</th><th style="width: 160px;">Narxi</th></tr></thead>
+        <tbody>
+            <script>
+                const parts = ["Old bufer", "Orqa bufer", "Old kapot", "Orqa bagaj", "Krilo o'ng", "Krilo chap", "Old eshik o'ng", "Old eshik chap", "Orqa eshik o'ng", "Orqa eshik chap", "Krisha", "Lobavoy oyna", "Orqa oyna", "Fara old o'ng", "Fara old chap", "Fara orqa o'ng", "Fara orqa chap", "Tumanga qarshi chiroq", "Povorotnik", "Salon plafoni", "Podkrilnik", "Oblisovka", "Zashita", "Zamok kapot", "Zamok bagaj", "Ruchka", "Dvigatel", "Blok silindr", "Golosovka", "Kolenval", "Porshen", "Shatun", "Kolso", "Klapan", "Raspredval", "Gidrokompensator", "Mator remeni", "Natyajitel", "Mator podushkasi", "Maslonasos", "Karter", "Svecha", "Katushka", "Broneprovod", "Generator", "Starter", "Kompressor", "Radiator", "Pech radiator", "Antifriz idishi", "Termostat", "Pompa", "Ventilyator", "Injektor", "Forsunka", "Benzonasos", "Datchik kolsena", "Datchik temperatura", "Korobka", "Sitsleplenie disk", "Korzina", "Vigimnoy", "Maxavik", "Kardan", "Most", "Reduktor", "Glushitel", "Rezonator", "Katalizator", "Amortizator old o'ng", "Amortizator old chap", "Amortizator orqa o'ng", "Amortizator orqa chap", "Prujina old", "Prujina orqa", "Rulavoy kolonka", "Rulavoy reyka", "GUR", "Sharavoy", "Rulavoy nakonechnik", "Granata tashqi", "Granata ichki", "Studitsa", "Podshibnik", "Tormoz disk", "Tormoz baraban", "Kolodka old", "Kolodka orqa", "Glavnoy tormoz", "Ruchnoy tros", "Vakuum", "Akkumulyator", "Blok predoxranitel", "Pereklyuchatel", "Zajiganiya zamok", "Signal", "Televizor", "Kovrik", "Sideniya", "Spidometr", "Magnitofon", "Dinamik", "Steklopodyomnik", "Pech motori", "Salon filtri", "Havo filtri", "Yog' filtri", "Benzin filtri", "Chexol", "Obshivka", "Disk", "Balon", "Domkrat", "Kalit", "Ognetushitel", "Aptechka", "Tros", "Antiradar", "Registrator", "Signalizatsiya", "Bort kompyuter", "Led lampa", "Xrom", "Brazgovik", "Deflektor", "Rezina", "Bak", "Dvornik", "Bachok", "Antifriz", "Motor moyi", "Korobka moyi", "Tormoz suyuqligi", "WD-40", "Silikon", "Shampun", "Gubka", "Mikrofibra", "Krilolar", "Petlya", "Salyas", "Bolt", "Gayka", "Kalpak", "Klip", "Xomut", "Remen generator", "Truba", "Ogranichitel", "Pult", "Ekran", "Knopka", "Forsunka rezina", "Modul", "Bar", "Sigaret yoqgich", "Soat", "Ko'zgu", "Rele", "Kabel", "Steklo", "Baxrom", "Tent", "Setka", "Shpatlyovka", "Kraska", "Polirovka", "Nakleyka", "Logotip", "Shildik", "Konditsioner radiatori", "Pech motori", "Zajiganiya moduli", "Svecha kaliti", "Probka", "Yamoq", "Moy nasosi", "Klapanniy salnik", "Kolenval salnik", "Raspredval salnik", "Poddon", "Prokladka", "Porshen halqasi", "Shatun vkladish", "Kolenval vkladish", "Shup", "Gidromator", "Eshik oynasi", "Parda", "Qo'l dayagich", "Oyna yuvish", "Kapot tros", "Zamok eshik", "Signalizatsiya bloki", "Zarba datchigi", "Germetik", "Suv nasosi", "Termostat korpusi", "Fara steklosi", "Povorotnik datchigi", "Stupitsa gaykasi", "Stoyka oporasi", "Stabilizator", "Vtulka", "USB zaryadnik", "FM modulator", "Sideniya dastagi", "Stop signal", "Nomer chirog'i", "Salondagi chiroq", "Avto gilamcha", "Rul o'rami", "Kapot amortizatori", "Bagaj amortizatori", "Eshik cheklagichi", "Kuzov qismi", "Bort tarmoq", "Generator shkifi", "Suv radiatori", "Konditsioner trubkasi", "Katalizator trubasi", "Rezonator", "Asl glushitel", "Kuzov simi", "Blok faralar", "Zajiganiya simi", "Toplivniy trubka", "Forsunka ramkasi", "Injektor bloki", "Mator datchiklari", "Porshen barmog'i", "Yog' o'lchagich", "Antifriz qopqog'i", "Tormoz qopqog'i", "Gidravlika trubasi", "Tormoz shlangi", "Rul tyagasi", "Amortizator yostig'i", "Prujina tagligi", "Balon nasosi", "O't o'chirgich", "Avariya belgisi", "Tros", "Antiradar", "Videoregistrator", "Signalizatsiya", "Bort kompyuter", "Led chiroq", "Xrom paket", "Loy himoya", "Kapot deflektori", "Oyna deflektori", "Eshik rezina", "Mator qopqog'i", "Klimat kontrol", "Bak qopqog'i", "Kapot tros", "Parda", "Bar", "Sigaret yoqgich", "Dvornik", "Dvornik motori", "Bachok", "Dvornik nasosi", "Kapot prujina", "Klipsa", "Prokladka to'plami", "Salnik", "Poddon probkasi", "Antifriz", "Moy", "Korobka moyi", "Tormoz suyuqligi", "GUR suyuqligi", "Svecha kaliti", "Germetik", "Mator yuvish", "Antikor", "Kraska", "Polirovka", "Shpatlyovka", "Nakleyka", "Logotip", "Shildik", "Chexol", "Tent", "Bamper setkasi", "Burchak", "Mator bloki", "Termostat korpusi", "Svecha provodi", "Simlar", "Faralar bloki", "Povorotnik", "Studitsa gaykasi", "Shlang", "Soat", "Kronshteyn", "Stoyka qoplamasi", "Orqa ko'zgu", "Quyosh ko'zgusi", "Petlya", "Bagaj petlya", "Kapot petlya", "Sideniya relsi", "Chexol skorost", "Rul lenta", "Kabel", "Filtri korpusi", "Poddon bolt", "Koleso bolt", "Kalpak", "Podkrilnik klipsi", "Xomut", "Remen", "Konditsioner remen", "Katalizator", "Rezonator", "Eshik cheklagich", "Qulflash mexanizm", "Pult", "Ekran", "Isitgich bloki", "Kruiz knopka", "Klapan", "Gidrokompensator", "Toplivniy ramka", "Forsunka rezina", "Injektor datchik", "Modul", "Mator datchik", "Porshen barmog'i", "Vkladish", "Shatun vkladish", "Shup", "Antifriz qopqoq", "Tormoz qopqoq", "Gidravlika truba", "Tormoz shlang", "Rul tyaga", "Reyka pildiragich", "Amortizator", "Prujina rezinasi", "Vtulka", "Zaryadnik", "USB", "FM", "Sideniya richag", "Oyna richagi", "Lampa", "Nomer chiroq", "Stop", "Zarba datchik", "Germetik", "Probka", "Yamoq", "Antifriz", "DOT-4", "WD-40", "Silikon", "Tozalovchi", "Oyna suyuqligi", "Shampun", "Salfetka", "Gubka", "Chexol", "Rul o'rami"];
+                for (let i = 0; i < parts.length; i++) {
+                    document.write(`<tr><td>${i + 1}</td><td><b>${parts[i]}</b></td><td><input type="text" class="price-input" placeholder="Narx"></td></tr>`);
+                }
+            </script>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
