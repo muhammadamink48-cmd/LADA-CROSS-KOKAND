@@ -43,7 +43,8 @@ const translations = {
         carYearLabel: "Yili:",
         carPriceLabel: "Narxi:",
         carDescLabel: "Mashina haqida ma'lumot:",
-        carImageLabel: "Mashina rasmi yoki To'lov cheki:",
+        carImageLabel: "Mashina rasmi:",
+        checkImageLabel: "To'lov cheki rasmi:",
         carSubmitBtn: "🚀 Saytga E'lon Qo'shish",
         successAlert: "E'loningiz muvaffaqiyatli qo'shildi!"
     },
@@ -88,7 +89,8 @@ const translations = {
         carYearLabel: "Йили:",
         carPriceLabel: "Нархи:",
         carDescLabel: "Машина ҳақида маълумот:",
-        carImageLabel: "Машина расми ёки Тўлов чеки:",
+        carImageLabel: "Машина расми:",
+        checkImageLabel: "Тўлов чеки расми:",
         carSubmitBtn: "🚀 Сайтга Эълон Қўшиш",
         successAlert: "Эълонингиз муваффақиятли қўшилди!"
     },
@@ -133,7 +135,8 @@ const translations = {
         carYearLabel: "Год:",
         carPriceLabel: "Цена:",
         carDescLabel: "Информация о машине:",
-        carImageLabel: "Фото машины или чек оплаты:",
+        carImageLabel: "Фото машины:",
+        checkImageLabel: "Чек об оплате:",
         carSubmitBtn: "🚀 Добавить на сайт",
         successAlert: "Ваше объявление успешно добавлено!"
     },
@@ -178,7 +181,8 @@ const translations = {
         carYearLabel: "Year:",
         carPriceLabel: "Price:",
         carDescLabel: "Car Information:",
-        carImageLabel: "Car photo or payment receipt:",
+        carImageLabel: "Car photo:",
+        checkImageLabel: "Payment receipt:",
         carSubmitBtn: "🚀 Add to Website",
         successAlert: "Your ad has been successfully added!"
     },
@@ -223,7 +227,8 @@ const translations = {
         carYearLabel: "Yıl:",
         carPriceLabel: "Fiyat:",
         carDescLabel: "Araç Hakkında Bilgi:",
-        carImageLabel: "Araç Fotoğrafı veya Ödeme Dekontu:",
+        carImageLabel: "Araç Fotoğrafı:",
+        checkImageLabel: "Ödeme Dekontu:",
         carSubmitBtn: "🚀 Siteye İlan Ekle",
         successAlert: "İlanınız başarıyla eklendi!"
     },
@@ -250,7 +255,7 @@ const translations = {
         priora_title: "لادا بريورا كروس",
         priora_desc: "انقر فوق الزر لقطع غيار لادا بريورا",
         priora_btn: "دخول قطع غيار لادا بريورا",
-        granta_title: "لada جرانتا كروس",
+        granta_title: "لادا جرانتا كروس",
         granta_desc: "انقر فوق الزر لقطع غيار لادا جرانتا",
         granta_btn: "دخول قطع غيار لادا جرانتا",
         l09_title: "لادا 2109",
@@ -268,7 +273,8 @@ const translations = {
         carYearLabel: "السنة:",
         carPriceLabel: "السعر:",
         carDescLabel: "معلومات حول السيارة:",
-        carImageLabel: "صورة السيارة أو إيصال الدفع:",
+        carImageLabel: "صورة السيارة:",
+        checkImageLabel: "إيصال الدفع:",
         carSubmitBtn: "🚀 إضافة إلى الموقع",
         successAlert: "تم إضافة إعلانك بنجاح!"
     }
@@ -378,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 5. MASHINA E'LONINI QO'YISH TIZIMI (Modal va LocalStorage)
+// 5. MASHINA E'LONINI QO'YISH TIZIMI
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const btnAd = document.querySelector(".btn-ad");
@@ -429,9 +435,16 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <textarea id="car-desc" rows="3" placeholder="Holati, kraskasi, yurgani..." required style="width:100%; padding:11px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; resize:vertical;"></textarea>
                             </div>
 
+                            <!-- MASHINA RASMI -->
                             <div>
-                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">${t.carImageLabel}</label>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">🚗 ${t.carImageLabel}</label>
                                 <input type="file" id="car-image" accept="image/*" required style="width:100%; padding:8px; border:1px dashed #ccc; border-radius:8px; background:#fafafa; font-size:13px; cursor:pointer;">
+                            </div>
+
+                            <!-- TO'LOV CHEKI RASMI -->
+                            <div>
+                                <label style="font-size:13px; font-weight:600; display:block; margin-bottom:5px; color:#333;">💳 ${t.checkImageLabel}</label>
+                                <input type="file" id="check-image" accept="image/*" required style="width:100%; padding:8px; border:1px dashed #ff9800; border-radius:8px; background:#fffaf0; font-size:13px; cursor:pointer;">
                             </div>
 
                             <button type="submit" style="width:100%; background:linear-gradient(135deg, #ff6b00, #ff8c00); color:#fff; border:none; padding:13px; font-weight:bold; border-radius:8px; cursor:pointer; font-size:16px; margin-top:5px; box-shadow:0 4px 10px rgba(255,107,0,0.3);">
@@ -450,40 +463,47 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("car-form").onsubmit = (event) => {
                 event.preventDefault();
 
-                const imageInput = document.getElementById("car-image");
-                const file = imageInput.files[0];
+                const carImageFile = document.getElementById("car-image").files[0];
+                const checkImageFile = document.getElementById("check-image").files[0];
 
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const imageUrl = e.target.result;
+                if (carImageFile && checkImageFile) {
+                    const readerCar = new FileReader();
+                    readerCar.onload = function(e1) {
+                        const carImageUrl = e1.target.result;
 
-                        const carData = {
-                            title: document.getElementById("car-title").value,
-                            year: document.getElementById("car-year").value,
-                            price: document.getElementById("car-price").value,
-                            phone: document.getElementById("car-phone").value,
-                            desc: document.getElementById("car-desc").value,
-                            image: imageUrl
+                        const readerCheck = new FileReader();
+                        readerCheck.onload = function(e2) {
+                            const checkImageUrl = e2.target.result;
+
+                            const carData = {
+                                title: document.getElementById("car-title").value,
+                                year: document.getElementById("car-year").value,
+                                price: document.getElementById("car-price").value,
+                                phone: document.getElementById("car-phone").value,
+                                desc: document.getElementById("car-desc").value,
+                                image: carImageUrl,
+                                checkImage: checkImageUrl
+                            };
+
+                            saveCarToStorage(carData);
+                            appendCarCard(carData);
+
+                            const messageText = `🚗 YANGI E'LON VA CHEK TASDIqi!\n\n` +
+                                                `📌 Mashina: ${carData.title} (${carData.year})\n` +
+                                                `💰 Narxi: ${carData.price}\n` +
+                                                `📞 Tel: ${carData.phone}\n` +
+                                                `📝 Ma'lumot: ${carData.desc}\n\n` +
+                                                `⚠️ Eslatma: Foydalanuvchi mashina rasmi va to'lov chekini biriktirdi.`;
+
+                            const telegramUrl = `https://t.me/muhammadamin_0330?text=${encodeURIComponent(messageText)}`;
+                            
+                            window.open(telegramUrl, '_blank');
+                            document.getElementById("car-ad-modal").remove();
+                            alert(t.successAlert);
                         };
-
-                        saveCarToStorage(carData);
-                        appendCarCard(carData);
-
-                        const messageText = `🚗 YANGI E'LON VA RASM/CHEK!\n\n` +
-                                            `📌 Mashina: ${carData.title} (${carData.year})\n` +
-                                            `💰 Narxi: ${carData.price}\n` +
-                                            `📞 Tel: ${carData.phone}\n` +
-                                            `📝 Ma'lumot: ${carData.desc}\n\n` +
-                                            `To'lov: +998916957959 raqamiga 5000 so'm to'landi.`;
-
-                        const telegramUrl = `https://t.me/muhammadamin_0330?text=${encodeURIComponent(messageText)}`;
-                        
-                        window.open(telegramUrl, '_blank');
-                        document.getElementById("car-ad-modal").remove();
-                        alert(t.successAlert);
+                        readerCheck.readAsDataURL(checkImageFile);
                     };
-                    reader.readAsDataURL(file);
+                    readerCar.readAsDataURL(carImageFile);
                 }
             };
         });
